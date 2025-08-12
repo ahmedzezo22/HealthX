@@ -1,0 +1,291 @@
+.prizes-section {
+  padding: 5rem 0;
+  background: white;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1.5rem;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.section-subtitle {
+  font-size: 1.125rem;
+  color: #555;
+}
+.main-prizes {
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 1024px) {
+  .main-prizes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.prize-wrapper {
+  transition: transform 0.3s;
+}
+.prize-wrapper:hover {
+  transform: translateY(-0.5rem);
+}
+.prize-first {
+  margin-top: -2rem;
+}
+.prize-card {
+  border-radius: 1rem;
+  padding: 2rem;
+  color: white;
+  box-shadow: 0 20px 25px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+}
+.prize-gold {
+  background: linear-gradient(to bottom right, #facc15, #ca8a04);
+  transform: scale(1.1);
+}
+.prize-silver {
+  background: linear-gradient(to bottom right, #9ca3af, #4b5563);
+}
+.prize-bronze {
+  background: linear-gradient(to bottom right, #fb923c, #c2410c);
+}
+.prize-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 5rem;
+  opacity: 0.2;
+}
+.prize-details {
+  position: relative;
+  z-index: 1;
+}
+.prize-rank {
+  font-size: 1.125rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+.prize-amount {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+.prize-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.prize-description {
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+.benefits-list {
+  list-style: none;
+  padding: 0;
+}
+.benefits-list li {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+}
+.benefit-check {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.special-prizes {
+  background: #f9fafb;
+  border-radius: 1.5rem;
+  padding: 3rem;
+  margin-top: 4rem;
+}
+.special-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.special-header h3 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+.special-header p {
+  font-size: 1.25rem;
+  color: #4b5563;
+}
+.special-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .special-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .special-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.special-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+.special-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+}
+.special-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.special-amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2563eb;
+  margin-bottom: 0.75rem;
+}
+
+.additional-benefits {
+  margin-top: 4rem;
+  text-align: center;
+}
+.additional-benefits h3 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 2rem;
+}
+.benefits-grid {
+  display: grid;
+  gap: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+@media (min-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.benefit-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.benefit-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.benefit-icon.primary {
+  background: #dbeafe;
+  color: #2563eb;
+}
+.benefit-icon.accent {
+  background: #fef3c7;
+  color: #d97706;
+}
+.benefit-icon.green {
+  background: #dcfce7;
+  color: #16a34a;
+}
+.benefit-item span {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+}
+.special-prizes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.special-prize-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  max-height: 100%; /* Make all cards equal height */
+  display: flex;
+  flex-direction: column;
+}
+
+.special-prize-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.special-prize-card .icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.special-prize-card h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.special-prize-card .amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2563eb;
+  margin-bottom: 0.75rem;
+}
+
+.special-prize-card p {
+  font-size: 0.875rem;
+  color: #4b5563;
+  flex-grow: 1; /* Fills empty space so buttons/footers align */
+}
+.main-prizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Space between cards */
+}
+
+.prize-wrapper {
+  flex: 1 1 calc(33.333% - 1.5rem); /* 3 per row */
+  display: flex; /* Ensures child can stretch */
+}
+
+.prize-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  height: 100%; /* Fill the height of the wrapper */
+  display: flex;
+  flex-direction: column;
+}
+
+.prize-details {
+  flex: 1; /* Push content to fill space */
+  display: flex;
+  flex-direction: column;
+}
+
+.prize-description {
+  flex-grow: 1; /* Fills leftover space so bottom benefits align */
+}
+
+.benefits-list {
+  margin-top: auto; /* Push benefits list to bottom */
+}

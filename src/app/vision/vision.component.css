@@ -1,0 +1,36 @@
+ .vision-mission .container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 50px;
+    flex-wrap: wrap;
+  }
+  .vision-mission .box {
+    background-color: #4A90E2;
+    color: white;
+    padding: 30px;
+    border-radius: 6px;
+    width: 45%;
+    min-width: 300px;
+  }
+  .vision-mission .title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .vision-mission .item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .vision-mission .number {
+    font-size: 50px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.3);
+    margin-left: 15px;
+  }
+  .vision-mission p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0;
+  }

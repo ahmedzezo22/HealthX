@@ -1,0 +1,30 @@
+.navbar {
+  background: white;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #333;
+  font-weight: 500;
+}
+
+.btn-login {
+  background: #007bff;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}

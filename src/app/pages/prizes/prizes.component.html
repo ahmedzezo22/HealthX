@@ -1,0 +1,111 @@
+<section id="prizes" class="prizes-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header animate-fade-in">
+      <h2 class="section-title">Prizes & Rewards</h2>
+      <p class="section-subtitle">
+        Compete for an amazing $50,000 prize pool plus exclusive opportunities with leading tech companies.
+      </p>
+    </div>
+
+    <!-- Main Prizes -->
+    <div class="main-prizes">
+      <div *ngFor="let prize of prizes; let i = index" 
+           [class]="'prize-wrapper ' + (i === 0 ? 'prize-first' : '')">
+        <!-- Prize Card -->
+        <div [class]="'prize-card ' +
+                     (i === 0 ? 'prize-gold' : 
+                      i === 1 ? 'prize-silver' : 'prize-bronze')">
+          <div class="prize-icon">{{ prize.icon }}</div>
+
+          <div class="prize-details">
+            <div class="prize-rank">{{ prize.rank }} Place</div>
+            <div class="prize-amount">{{ prize.amount }}</div>
+            <h3 class="prize-title">{{ prize.title }}</h3>
+            <p class="prize-description">{{ prize.description }}</p>
+
+            <ul class="benefits-list">
+              <li *ngFor="let benefit of prize.benefits">
+                <svg class="benefit-check" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 
+                  8a1 1 0 01-1.414 0l-4-4a1 1 0 
+                  011.414-1.414L8 12.586l7.293-7.293a1 
+                  1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                {{ benefit }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Special Prizes -->
+    <div class="special-prizes">
+      <div class="special-header">
+        <h3>Special Recognition Awards</h3>
+        <p>Additional opportunities to win based on specific criteria and community voting.</p>
+      </div>
+
+      <div class="special-grid">
+        <div *ngFor="let specialPrize of specialPrizes" class="special-card">
+          <div class="special-icon">{{ specialPrize.icon }}</div>
+          <h4>{{ specialPrize.title }}</h4>
+          <div class="special-amount">{{ specialPrize.amount }}</div>
+          <p>{{ specialPrize.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Benefits -->
+    <div class="additional-benefits">
+      <h3>All Participants Receive</h3>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon primary">
+            <svg viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M12 6.253v13m0-13C10.832 5.477 
+              9.246 5 7.5 5S4.168 5.477 3 
+              6.253v13C4.168 18.477 5.754 18 7.5 
+              18s3.332.477 4.5 1.253m0-13C13.168 
+              5.477 14.754 5 16.5 5c1.746 0 
+              3.332.477 4.5 1.253v13C20.832 18.477 
+              19.246 18 17.5 18c-1.746 0-3.332.477-4.5 
+              1.253"></path>
+            </svg>
+          </div>
+          <span>Certificate of Participation</span>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon accent">
+            <svg viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M17 20h5v-2a3 3 0 
+              00-5.356-1.857M17 20H7m10 
+              0v-2c0-.656-.126-1.283-.356-1.857M7 
+              20H2v-2a3 3 0 
+              015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 
+              0a5.002 5.002 0 019.288 0M15 7a3 3 0 
+              11-6 0 3 3 0 016 0zm6 3a2 2 0 
+              11-4 0 2 2 0 014 0zM7 10a2 2 0 
+              11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <span>Networking Opportunities</span>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon green">
+            <svg viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <span>Exclusive Swag & Goodies</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

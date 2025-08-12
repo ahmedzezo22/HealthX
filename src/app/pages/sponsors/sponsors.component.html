@@ -1,0 +1,62 @@
+<section id="sponsors" class="sponsors-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">Our Amazing Sponsors</h2>
+      <p class="section-subtitle">
+        Thanks to our incredible sponsors who make this hackathon possible and support innovation in HPC technology.
+      </p>
+    </div>
+
+    <!-- Platinum Sponsors -->
+    <div *ngIf="getSponsorsByTier('platinum').length > 0" class="sponsor-tier platinum">
+      <div class="tier-header">
+        <h3 class="tier-title">{{ getTierTitle('platinum') }}</h3>
+        <div class="tier-divider platinum-divider"></div>
+      </div>
+      <div class="tier-grid center">
+        <div *ngFor="let sponsor of getSponsorsByTier('platinum')" class="sponsor-card platinum-card">
+          <div class="sponsor-content">
+            <img [src]="sponsor.logo" [alt]="sponsor.name" class="sponsor-logo-large">
+            <h4 class="sponsor-name-large">{{ sponsor.name }}</h4>
+            <p class="sponsor-description">{{ sponsor.description }}</p>
+            <a *ngIf="sponsor.website" [href]="sponsor.website" class="sponsor-btn primary">
+              Visit Website
+              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Similar structure for gold, silver, bronze sponsors... -->
+    
+    <!-- Sponsorship CTA -->
+    <div class="sponsor-cta">
+      <h3 class="cta-title">Become a Sponsor</h3>
+      <p class="cta-text">
+        Join our amazing sponsors and support the next generation of HPC innovators. 
+        Showcase your brand to 500+ talented developers and researchers.
+      </p>
+      <div class="cta-buttons">
+        <a href="mailto:sponsors@sprintkku.edu.sa" class="cta-btn white">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          Contact Us
+        </a>
+        <a href="#" class="cta-btn outline-white">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Download Sponsorship Package
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

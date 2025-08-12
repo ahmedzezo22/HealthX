@@ -1,0 +1,11 @@
+.video-container {
+  overflow: hidden;
+  border-radius: 8px;
+}
+iframe {
+  display: block;
+}
+.dialog-actions {
+  text-align: right;
+  margin-top: 8px;
+}

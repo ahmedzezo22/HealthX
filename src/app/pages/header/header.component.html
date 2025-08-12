@@ -1,0 +1,44 @@
+<header [class]="isScrolled ? 'header scrolled' : 'header'">
+  <nav class="nav-container">
+    <div class="nav-inner">
+      <!-- Logo -->
+      <div class="logo">
+            <img 
+              [class]="isScrolled ? 'logo-img scrolled' : 'logo-img'"
+              src="assets/logo.png" 
+              alt="Sprint HPC Hackathon Logo"
+            />
+      </div>
+
+
+      <!-- Desktop Navigation -->
+      <div class="nav-links">
+        <a (click)="scrollToSection('hero')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Home</a>
+        <a (click)="scrollToSection('about')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">About</a>
+        <!-- <a (click)="scrollToSection('schedule')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Schedule</a> -->
+        <a (click)="scrollToSection('prizes')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Prizes</a>
+        <a (click)="scrollToSection('registration')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Register</a>
+        <a (click)="scrollToSection('contact')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Contact</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button (click)="toggleMenu()" class="menu-button">
+        <div class="menu-icon">
+          <span [class]="isMenuOpen ? 'line rotate-top' : 'line top'"></span>
+          <span [class]="isMenuOpen ? 'line hidden' : 'line middle'"></span>
+          <span [class]="isMenuOpen ? 'line rotate-bottom' : 'line bottom'"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div [class]="isMenuOpen ? 'mobile-menu open' : 'mobile-menu'">
+      <a (click)="scrollToSection('hero')">Home</a>
+      <a (click)="scrollToSection('about')">About</a>
+      <a (click)="scrollToSection('schedule')">Schedule</a>
+      <a (click)="scrollToSection('prizes')">Prizes</a>
+      <a (click)="scrollToSection('registration')">Register</a>
+      <a (click)="scrollToSection('contact')">Contact</a>
+    </div>
+  </nav>
+</header>

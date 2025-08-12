@@ -1,0 +1,98 @@
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CountUpModule } from 'ngx-countup';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { VideoDialogComponent } from '../videoDialog/video-dialog.component';
+
+@Component({
+  selector: 'app-hero',
+  standalone: true,
+  imports: [CommonModule,CountUpModule],
+  templateUrl: './hero.component.html',
+  styleUrls: ['./hero.component.css']
+})
+export class HeroComponent implements OnInit, OnDestroy {
+  constructor(private dialog: MatDialog, private sanitizer: DomSanitizer) {}
+videoUrl: any;
+  daysRemaining = 0;
+  hoursRemaining = 0;
+  minutesRemaining = 0;
+  secondsRemaining = 0;
+  private countdownInterval: any;
+  
+  stats = [
+    { value: 48, label: 'Hours of Coding' },
+    { value: 50000, label: 'Prize Pool' },
+    { value: 500, label: 'Participants' }
+  ];
+  
+ 
+
+  private interval: any;
+
+  ngOnInit() {
+    this.startCountdown();
+    
+  }
+
+  ngOnDestroy() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
+   startCountdown() {
+    // Set your target date here (YYYY, MM-1, DD)
+    const targetDate = new Date(2025, 10, 30); // November 30, 2025 (months are 0-indexed)
+
+    this.countdownInterval = setInterval(() => {
+      const now = new Date();
+      const diff = targetDate.getTime() - now.getTime();
+
+      this.daysRemaining = Math.floor(diff / (1000 * 60 * 60 * 24));
+      this.hoursRemaining = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      this.minutesRemaining = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      this.secondsRemaining = Math.floor((diff % (1000 * 60)) / 1000);
+
+      if (diff <= 0) {
+        clearInterval(this.countdownInterval);
+        this.daysRemaining = 0;
+        this.hoursRemaining = 0;
+        this.minutesRemaining = 0;
+        this.secondsRemaining = 0;
+      }
+    }, 1000);
+  }
+
+
+
+  scrollToRegistration() {
+    document.getElementById('registration')?.scrollIntoView({ behavior: 'smooth' });
+  }
+   animateCountdownItem(event: any) {
+    event.target.classList.add('hovered');
+  }
+
+  resetCountdownItem(event: any) {
+    event.target.classList.remove('hovered');
+  }
+ 
+scrollToNextSection() {
+  const nextSection = document.getElementById('about');
+  if (nextSection) {
+    nextSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+ openVideoModal(videoLink: string) {
+    const safeUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoLink + '?autoplay=1');
+
+    this.dialog.open(VideoDialogComponent, {
+      data: { videoUrl: safeUrl },
+      width: '800px',
+      panelClass: 'custom-video-dialog'
+    });
+  }
+  
+}
+
