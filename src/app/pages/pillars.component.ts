@@ -7,7 +7,7 @@ import { TranslatePipe } from '../pipes/translate.pipe';
   standalone: true,
   imports: [CommonModule, TranslatePipe],
   template: `
-  <section id="pillars" class="pillars-section" dir="rtl" data-reveal>
+  <section id="pillars" class="pillars-section"  data-reveal>
     <div class="pillars-hero">
       <div class="hero-content" data-reveal="fade-up">
         <h2 class="title">{{ 'PILLARS.TITLE' | translate }}</h2>
