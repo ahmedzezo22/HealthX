@@ -33,6 +33,7 @@ import { TranslatePipe } from '../pipes/translate.pipe';
             <p class="card-description">{{ 'PARTICIPATE.STEP3_DESC' | translate }}</p>
           </div>
 
+
           <!-- Step 4: Evaluation and Selection of Winners -->
           <div class="process-card" data-reveal="slide-left">
             <div class="icon-circle"><span class="text-number">04</span></div>
