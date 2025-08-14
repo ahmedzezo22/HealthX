@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '../../pipes/translate.pipe';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
@@ -17,10 +19,12 @@ export class ContactComponent {
     message: ''
   };
 
+  constructor(private translation: TranslationService) {}
+
   submitContact() {
     // Handle contact form submission
     console.log('Contact form submitted:', this.contactForm);
-    alert('Thank you for your message! We\'ll get back to you soon.');
+    alert(this.translation.translate('CONTACT.SUCCESS'));
     
     // Reset form
     this.contactForm = {

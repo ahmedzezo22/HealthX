@@ -1,310 +1,63 @@
 <section id="registration" class="registration-section">
   <div class="registration-container">
     <!-- Section Header -->
-    <div class="section-header animate-fade-in">
-      <h2 class="section-title">Register for the Hackathon</h2>
+    <div class="section-header animate-fade-in" >
+      <h2 class="section-title">{{ 'REG_SIMPLE.TITLE' | translate }}</h2>
       <p class="section-subtitle">
-        Join the most exciting HPC hackathon and compete for amazing prizes. Registration closes soon!
+        {{ 'REG_SIMPLE.SUBTITLE' | translate }}
       </p>
     </div>
 
     <!-- Registration Form -->
     <div class="registration-form-container">
       <div class="registration-form-wrapper">
-        <!-- Progress Bar -->
-        <div class="progress-bar-container">
-          <div class="progress-header">
-            <span class="progress-step">Step {{ currentStep }} of {{ totalSteps }}</span>
-            <span class="progress-title">{{ getStepTitle() }}</span>
-          </div>
-          <div class="progress-bar-bg">
-            <div 
-              class="progress-bar-fill"
-              [style.width.%]="(currentStep / totalSteps) * 100"
-            ></div>
-          </div>
-        </div>
-
         <form (ngSubmit)="submitRegistration()" class="registration-form">
-          <!-- Step 1: Personal Information -->
-          <div *ngIf="currentStep === 1" class="form-step animate-slide-up">
-            <div class="form-grid">
+          <div class="form-step animate-slide-up">
               <div class="form-group">
-                <label class="form-label">First Name *</label>
+              <label class="form-label">{{ 'REG_SIMPLE.FULL_NAME_LABEL' | translate }} *</label>
                 <input 
                   type="text" 
-                  [(ngModel)]="registrationData.firstName"
-                  name="firstName"
+                [(ngModel)]="registrationData.fullName"
+                name="fullName"
                   required
                   class="form-input"
-                  placeholder="Enter your first name"
-                />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Last Name *</label>
-                <input 
-                  type="text" 
-                  [(ngModel)]="registrationData.lastName"
-                  name="lastName"
-                  required
-                  class="form-input"
-                  placeholder="Enter your last name"
-                />
-              </div>
+                [placeholder]="'REG_SIMPLE.FULL_NAME_PLACEHOLDER' | translate"
+              />
             </div>
 
             <div class="form-grid">
               <div class="form-group">
-                <label class="form-label">Email Address *</label>
+                <label class="form-label">{{ 'REG_SIMPLE.EMAIL_LABEL' | translate }} *</label>
                 <input 
                   type="email" 
                   [(ngModel)]="registrationData.email"
                   name="email"
                   required
                   class="form-input"
-                  placeholder="your.email@domain.com"
+                  [placeholder]="'REG_SIMPLE.EMAIL_PLACEHOLDER' | translate"
                 />
               </div>
               <div class="form-group">
-                <label class="form-label">Phone Number</label>
+                <label class="form-label">{{ 'REG_SIMPLE.PHONE_LABEL' | translate }}</label>
                 <input 
                   type="tel" 
                   [(ngModel)]="registrationData.phone"
                   name="phone"
                   class="form-input"
-                  placeholder="+1 (555) 123-4567"
+                  [placeholder]="'REG_SIMPLE.PHONE_PLACEHOLDER' | translate"
                 />
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label">University/Organization *</label>
+              <label class="form-label">{{ 'REG_SIMPLE.COMPANY_LABEL' | translate }}</label>
               <input 
                 type="text" 
-                [(ngModel)]="registrationData.university"
-                name="university"
-                required
+                [(ngModel)]="registrationData.company"
+                name="company"
                 class="form-input"
-                placeholder="King Khalid University"
+                [placeholder]="'REG_SIMPLE.COMPANY_PLACEHOLDER' | translate"
               />
-            </div>
-
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label">Study Level</label>
-                <select 
-                  [(ngModel)]="registrationData.studyLevel"
-                  name="studyLevel"
-                  class="form-input"
-                >
-                  <option value="">Select level</option>
-                  <option value="undergraduate">Undergraduate</option>
-                  <option value="graduate">Graduate</option>
-                  <option value="phd">PhD</option>
-                  <option value="professional">Professional</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Major/Field</label>
-                <input 
-                  type="text" 
-                  [(ngModel)]="registrationData.major"
-                  name="major"
-                  class="form-input"
-                  placeholder="Computer Science"
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2: Experience & Skills -->
-          <div *ngIf="currentStep === 2" class="form-step animate-slide-up">
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label">Programming Experience *</label>
-                <select 
-                  [(ngModel)]="registrationData.programmingExperience"
-                  name="programmingExperience"
-                  required
-                  class="form-input"
-                >
-                  <option value="">Select experience level</option>
-                  <option value="beginner">Beginner (0-1 years)</option>
-                  <option value="intermediate">Intermediate (1-3 years)</option>
-                  <option value="advanced">Advanced (3-5 years)</option>
-                  <option value="expert">Expert (5+ years)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">HPC Experience</label>
-                <select 
-                  [(ngModel)]="registrationData.hpcExperience"
-                  name="hpcExperience"
-                  class="form-input"
-                >
-                  <option value="">Select HPC experience</option>
-                  <option value="none">No experience</option>
-                  <option value="basic">Basic knowledge</option>
-                  <option value="intermediate">Some experience</option>
-                  <option value="advanced">Extensive experience</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Preferred Programming Languages</label>
-              <div class="languages-grid">
-                <div *ngFor="let lang of programmingLanguages" class="language-item">
-                  <button
-                    type="button"
-                    (click)="toggleLanguage(lang)"
-                    [class]="'language-button ' + 
-                             (isLanguageSelected(lang) ? 'selected-language' : 'unselected-language')"
-                  >
-                    {{ lang }}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Previous Hackathons Attended</label>
-              <select 
-                [(ngModel)]="registrationData.previousHackathons"
-                name="previousHackathons"
-                class="form-input"
-              >
-                <option value="">Select number</option>
-                <option value="0">This is my first!</option>
-                <option value="1-2">1-2 hackathons</option>
-                <option value="3-5">3-5 hackathons</option>
-                <option value="6+">6+ hackathons</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Step 3: Team & Preferences -->
-          <div *ngIf="currentStep === 3" class="form-step animate-slide-up">
-            <div class="form-group">
-              <label class="form-label">Team Preference *</label>
-              <div class="team-options-grid">
-                <label class="team-option">
-                  <input 
-                    type="radio" 
-                    [(ngModel)]="registrationData.teamPreference"
-                    name="teamPreference"
-                    value="existing"
-                    class="team-radio"
-                  />
-                  <div class="team-option-content">
-                    <div class="team-option-title">I have a team</div>
-                    <div class="team-option-subtitle">Register with existing team members</div>
-                  </div>
-                </label>
-                <label class="team-option">
-                  <input 
-                    type="radio" 
-                    [(ngModel)]="registrationData.teamPreference"
-                    name="teamPreference"
-                    value="solo"
-                    class="team-radio"
-                  />
-                  <div class="team-option-content">
-                    <div class="team-option-title">Find me a team</div>
-                    <div class="team-option-subtitle">We'll help match you with others</div>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <div *ngIf="registrationData.teamPreference === 'existing'" class="team-members-section">
-              <div class="form-group">
-                <label class="form-label">Team Name</label>
-                <input 
-                  type="text" 
-                  [(ngModel)]="registrationData.teamName"
-                  name="teamName"
-                  class="form-input"
-                  placeholder="Enter your team name"
-                />
-              </div>
-              
-              <div class="form-group">
-                <label class="form-label">Team Members (including you, max 4)</label>
-                <div class="team-members-list">
-                  <div *ngFor="let member of registrationData.teamMembers; let i = index" class="team-member-input">
-                    <input 
-                      type="email" 
-                      [(ngModel)]="registrationData.teamMembers[i]"
-                      [name]="'teamMember' + i"
-                      class="form-input"
-                      [placeholder]="i === 0 ? 'Your email (team leader)' : 'Team member email'"
-                    />
-                    <button 
-                      *ngIf="i > 0" 
-                      type="button"
-                      (click)="removeTeamMember(i)"
-                      class="remove-member-button"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </div>
-                <button 
-                  *ngIf="registrationData.teamMembers.length < 4"
-                  type="button"
-                  (click)="addTeamMember()"
-                  class="add-member-button"
-                >
-                  + Add Team Member
-                </button>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Areas of Interest</label>
-              <div class="interests-grid">
-                <div *ngFor="let interest of interestAreas" class="interest-item">
-                  <button
-                    type="button"
-                    (click)="toggleInterest(interest)"
-                    [class]="'interest-button ' + 
-                             (isInterestSelected(interest) ? 'selected-interest' : 'unselected-interest')"
-                  >
-                    {{ interest }}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label">T-Shirt Size</label>
-                <select 
-                  [(ngModel)]="registrationData.tshirtSize"
-                  name="tshirtSize"
-                  class="form-input"
-                >
-                  <option value="">Select size</option>
-                  <option value="XS">XS</option>
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                  <option value="XXL">XXL</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Dietary Restrictions</label>
-                <input 
-                  type="text" 
-                  [(ngModel)]="registrationData.dietaryRestrictions"
-                  name="dietaryRestrictions"
-                  class="form-input"
-                  placeholder="e.g., Vegetarian, Gluten-free"
-                />
-              </div>
             </div>
 
             <div class="terms-checkbox">
@@ -316,42 +69,23 @@
                 class="terms-input"
               />
               <div class="terms-text">
-                I agree to the <a href="#" class="terms-link">Terms and Conditions</a> 
-                and <a href="#" class="terms-link">Privacy Policy</a>. 
-                I understand that this is a competitive hackathon and my participation is voluntary.
-              </div>
+                {{ 'REG_SIMPLE.TERMS_PREFIX' | translate }}
+                <a href="#" class="terms-link">{{ 'REG_SIMPLE.TERMS_TOS' | translate }}</a>
+                {{ 'REG_SIMPLE.AND' | translate }}
+                <a href="#" class="terms-link">{{ 'REG_SIMPLE.TERMS_PRIVACY' | translate }}</a>.
             </div>
           </div>
 
-          <!-- Navigation Buttons -->
           <div class="form-navigation">
+              <div class="empty-space"></div>
             <button
-              *ngIf="currentStep > 1"
-              type="button"
-              (click)="prevStep()"
-              class="nav-button prev-button"
-            >
-              Previous
-            </button>
-            <div *ngIf="currentStep === 1" class="empty-space"></div>
-
-            <button
-              *ngIf="currentStep < totalSteps"
-              type="button"
-              (click)="nextStep()"
-              class="nav-button next-button"
-            >
-              Next Step
-            </button>
-
-            <button
-              *ngIf="currentStep === totalSteps"
               type="submit"
               [disabled]="!registrationData.agreesToTerms"
               class="nav-button submit-button"
             >
-              Complete Registration
+                {{ 'REG_SIMPLE.SUBMIT' | translate }}
             </button>
+            </div>
           </div>
         </form>
       </div>

@@ -1,69 +1,79 @@
-<section id="about" class="about-section" dir="rtl">
+<section id="about" class="about-section" >
   <div class="container">
-    <!-- Section Header -->
-    <div class="section-header fade-in">
-      <h2 class="section-title">نظرة عامة</h2>
-      <p class="section-subtitle">
-        يهدف مشروع مؤتمر الأبحاث الصحية إلى تعزيز ثقافة البحث العلمي في القطاع الصحي من خلال توفير منصة علمية تجمع الباحثين والخبراء لمناقشة أحدث المستجدات. كما يهدف إلى دعم الباحثين الناشئين من خلال تشكيل مجموعات بحثية استهدفت بشكل خاص الأطباء المقيمين، المتدربين والتخصصات الصحية الأخرى ومن ثم تقديم الدعم والإشراف العلمي لهم في جميع مراحل البحث؛ بدءاً من توليد الفكرة، مروراً بتنفيذ الدراسة، وانتهاءً بالنشر العلمي داخل المؤتمر الذي يضم فعاليات مهمة للوصول لأكبر شريحة ممكنة من المجتمع لتبادل المعرفة وتحفيز الابتكار.
-      </p>
+    <!-- Overview Card (brochure style) -->
+    <div class="overview-card">
+      <div class="overview-decor"></div>
+      <div class="overview-grid">
+        <div class="overview-image">
+          <div class="image-frame">
+            <img src="assets/banner.jpg" alt="مباني حديثة ترمز للابتكار الصحي" />
+          </div>
+        </div>
+        <div class="overview-text">
+          <h2 class="overview-title">{{ 'ABOUT.OVERVIEW_TITLE' | translate }}</h2>
+          <div class="title-underline"></div>
+          <p class="overview-paragraph">
+            {{ 'ABOUT.OVERVIEW_DESC' | translate }}
+          </p>
+          <div class="overview-cta">
+            <a class="btn-primary" href="#registration">{{ 'ABOUT.LEARN_MORE' | translate }}</a>
+            <a class="btn-secondary" href="#" download>{{ 'ABOUT.CONTACT_US' | translate }}</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
-      <!-- Text Content -->
-     <section id="project-goals" class="goals-section" dir="rtl">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">أهداف المشروع</h2>
-    </div>
+     <section id="project-goals" class="goals-section" >
+      <div class="container">
+        <div class="goals-board" data-reveal>
+          <div class="board-header">
+            <h2 class="goals-title">{{ 'ABOUT.GOALS_TITLE' | translate }}</h2>
+          </div>
 
-    <div class="goals-container">
-      <!-- Goal 1 -->
-      <div class="goal-card">
-        <div class="goal-number">١</div>
-        <div class="goal-content">
-          <h3 class="goal-title">تحويل الأفكار إلى أبحاث قابلة للنشر</h3>
-          <p class="goal-description">
-            تمكين المشاركين من صناعة أبحاث تبدأ بفكرة بسيطة وتنتهي بنشر علمي مؤثر، تحت إشراف أكاديمي ومتابعة احترافية
-          </p>
+          <div class="goals-list-visual">
+            <!-- Goal 1 -->
+            <div class="goal-item" data-reveal>
+              <div class="goal-icon">
+                <span>💡</span>
+              </div>
+              <div class="goal-bubble">
+                <h3>{{ 'ABOUT.GOAL1' | translate }}</h3>
+                <p>{{ 'ABOUT.GOAL1_DESC' | translate }}</p>
+              </div>
+            </div>
+
+            <!-- Goal 2 -->
+            <div class="goal-item" data-reveal>
+              <div class="goal-icon"><span>🚀</span></div>
+              <div class="goal-bubble">
+                <h3>{{ 'ABOUT.GOAL2' | translate }}</h3>
+                <p>{{ 'ABOUT.GOAL2_DESC' | translate }}</p>
+              </div>
+            </div>
+
+            <!-- Goal 3 -->
+            <div class="goal-item" data-reveal>
+              <div class="goal-icon"><span>👩‍🔬</span></div>
+              <div class="goal-bubble">
+                <h3>{{ 'ABOUT.GOAL3' | translate }}</h3>
+                <p>{{ 'ABOUT.GOAL3_DESC' | translate }}</p>
+              </div>
+            </div>
+
+            <!-- Goal 4 -->
+            <div class="goal-item" data-reveal>
+              <div class="goal-icon"><span>🏅</span></div>
+              <div class="goal-bubble">
+                <h3>{{ 'ABOUT.GOAL4' | translate }}</h3>
+                <p>{{ 'ABOUT.GOAL4_DESC' | translate }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Goal 2 -->
-      <div class="goal-card">
-        <div class="goal-number">٢</div>
-        <div class="goal-content">
-          <h3 class="goal-title">صناعة زخم بحثي ديناميكي يسوق المؤتمر</h3>
-          <p class="goal-description">
-            إطلاق هاكاثون بحثي قبل المؤتمر يشمل روح التحدي، وتشكيل الأفكار الإبداعية، ومنصة للعرض والتميز ليشمل الجمع بين التوجيه الأكاديمي، التنافس الإبداعي والنشر العلمي
-          </p>
-        </div>
-      </div>
-
-      <!-- Goal 3 -->
-      <div class="goal-card">
-        <div class="goal-number">٣</div>
-        <div class="goal-content">
-          <h3 class="goal-title">بناء جيل جديد من الباحثين القادة</h3>
-          <p class="goal-description">
-            اكتشاف ورعاية مواهب بحثية شابة قادرة على قيادة مشاريع علمية مستدامة وتقديم حلول تخدم المشكلات التي يواجهها القطاع الصحي
-          </p>
-        </div>
-      </div>
-
-      <!-- Goal 4 -->
-      <div class="goal-card">
-        <div class="goal-number">٤</div>
-        <div class="goal-content">
-          <h3 class="goal-title">تعزيز روح التنافس العلمي</h3>
-          <p class="goal-description">
-            من خلال تكريم أفضل الأبحاث والمشاركات خلال المؤتمر، ومنح جوائز تقديرية للمتميزين وإتاحة الفرصة لعرض مشاريعهم أمام لجان علمية ومجتمع أكاديمي متخصص
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
       <!-- Image/Visual Content -->
       <!-- <div class="image-content slide-up">

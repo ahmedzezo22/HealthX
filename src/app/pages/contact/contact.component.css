@@ -36,6 +36,13 @@
   }
 }
 
+.map-card{margin-top:16px}
+
+/* Location heading/link to mimic screenshot style */
+.location-heading{font-size:22px;color:#0f172a;margin-bottom:8px}
+.location-link{display:inline-block;color:#0ea5e9;text-decoration:none;margin-bottom:12px}
+.location-link:hover{text-decoration:underline}
+
 /* Info Cards */
 .info-card {
   display: flex;

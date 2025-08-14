@@ -4,8 +4,57 @@
 }
 
 .about-section {
-  background-color: #f8f9fa;
-  padding: 60px 0;
+  background: linear-gradient(180deg, #0b1f3f 0%, #0a1e43 100%);
+  padding: 70px 0;
+}
+
+/* Overview brochure-like card */
+.overview-card {
+  position: relative;
+  background: radial-gradient(1200px 400px at -10% 0%, rgba(255,255,255,0.06), transparent 60%), rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 26px 22px;
+  margin-bottom: 36px;
+  color: #fff;
+  overflow: hidden;
+}
+.overview-card::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 12px, transparent 12px, transparent 32px);
+  opacity: .06;
+  pointer-events: none;
+  z-index: 0;
+}
+.overview-decor::before,
+.overview-decor::after {
+  content: '';
+  position: absolute;
+  background: rgba(255,255,255,0.08);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.overview-decor::before { width: 180px; height: 180px; top: -30px; right: 80px; transform: rotate(25deg); }
+.overview-decor::after { width: 120px; height: 120px; bottom: -20px; left: 120px; transform: rotate(-25deg); }
+
+.overview-grid { display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: center; position: relative; z-index: 1; }
+.image-frame { background: #fff; border-radius: 20px; padding: 10px; box-shadow: 0 12px 24px rgba(0,0,0,0.25); }
+.image-frame img { display: block; width: 100%; border-radius: 14px; }
+.overview-title { font-size: 42px; font-weight: 900; margin: 4px 0 6px 0; color: #fff; animation: revealUp .8s ease both; }
+.title-underline { width: 80px; height: 4px; background: rgba(255,255,255,0.8); border-radius: 999px; margin: 0 0 16px 0; transform-origin: right; animation: underlineExpand .8s ease .15s both; }
+.overview-paragraph { line-height: 1.9; color: rgba(255,255,255,0.92); }
+.overview-paragraph .accent { color: #9ae6b4; font-weight: 800; }
+.overview-cta { display: flex; gap: 12px; margin-top: 14px; }
+
+/* Animations */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes underlineExpand {
+  from { transform: scaleX(0); opacity: 0.4; }
+  to { transform: scaleX(1); opacity: 1; }
 }
 
 .section-header {
@@ -15,13 +64,13 @@
 
 .section-title {
   font-size: 2.2rem;
-  color: #2c3e50;
+  color: #fff;
   margin-bottom: 15px;
 }
 
 .section-subtitle {
   font-size: 1.1rem;
-  color: #495057;
+  color: rgba(255,255,255,0.85);
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.8;
@@ -130,6 +179,22 @@
   padding: 80px 0;
 }
 
+/* New goals board (brochure-like) */
+.goals-board{position:relative;background:linear-gradient(180deg,#133a7a 0%,#0e2a59 100%);border-radius:18px;padding:28px 18px;box-shadow:0 12px 28px rgba(0,0,0,.18);overflow:hidden}
+.board-header{display:flex;justify-content:center;align-items:center;margin-bottom:10px}
+.goals-title{color:#fff;font-size:38px;font-weight:900;margin:0;letter-spacing:.5px}
+.goals-list-visual{display:grid;grid-template-columns:repeat(2,minmax(240px,1fr));gap:26px;position:relative}
+.goal-item{display:flex;align-items:flex-start;gap:12px}
+.goal-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(145deg,#e6eefc,#c7d9ff);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 20px rgba(0,0,0,.15)}
+.goal-icon span{font-size:28px}
+.goal-bubble{flex:1;background:linear-gradient(145deg,#0f3b7a,#0a2c5b);color:#fff;border-radius:18px 18px 18px 6px;padding:14px 16px;border:1px solid rgba(255,255,255,.18);box-shadow:0 10px 22px rgba(0,0,0,.18)}
+.goal-bubble h3{margin:0 0 6px 0;font-size:18px}
+.goal-bubble p{margin:0;color:rgba(255,255,255,.92);line-height:1.7}
+
+/* Reveal on scroll */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal-in{opacity:1;transform:none}
+
 .section-header {
   text-align: center;
   margin-bottom: 50px;
@@ -190,6 +255,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .goals-list-visual{grid-template-columns:1fr}
   .goal-card {
     flex-direction: column;
     padding: 20px;
@@ -202,4 +268,7 @@
   .goal-content {
     padding-right: 0;
   }
+}
+@media (max-width: 900px) {
+  .overview-grid { grid-template-columns: 1fr; }
 }

@@ -12,9 +12,9 @@
 }
 .hero-section {
   position: relative;
-  background: linear-gradient(to bottom right, #2f5fb3 0%, #15336e 100%);
+  background: linear-gradient(180deg, #0e2a59 0%, #15336e 45%, #0a1e43 100%);
   color: white;
-  padding: 100px 20px;
+  padding: 120px 24px 140px 24px;
   overflow: hidden;
 }
 
@@ -492,12 +492,12 @@
 /* hero.component.scss */
 .countdown-container {
   text-align: center;
-  margin: 20px 0;
+  margin: 28px 0 24px 0;
 }
 
 .countdown-title {
   font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 15px;
   font-weight: bold;
 }
@@ -510,30 +510,86 @@
 }
 
 .countdown-box {
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  padding: 10px 15px;
-  min-width: 60px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 12px 18px;
+  min-width: 70px;
   text-align: center;
-  background-color: #f9f9f9;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
 }
 
 .countdown-value {
-  font-size: 24px;
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 5px;
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
 }
 
 .countdown-label {
   font-size: 14px;
-  color: #666;
+  color: rgba(255,255,255,0.8);
 }
 
 .countdown-separator {
   font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: rgba(255,255,255,0.85);
   padding: 0 5px;
   margin-top: -15px; /* Adjust alignment */
 }
+
+/* Brochure header styling */
+.brochure-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  animation: fadeInUp 0.9s ease both;
+}
+.brand-logo {
+  height: 54px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
+}
+.brand-tagline {
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+}
+
+.project-title {
+  font-size: clamp(36px, 7vw, 88px);
+  letter-spacing: 4px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 6px 0 8px 0;
+  text-shadow: 0 6px 22px rgba(0,0,0,0.35);
+  animation: fadeInUp 1s ease 0.1s both;
+}
+
+.project-date {
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 8px;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+/* Skyline silhouette bar */
+/* Slider */
+.slider{position:relative; height: 90vh; min-height:560px; overflow:hidden; border-radius:16px}
+.slide{position:absolute; inset:0; background: var(--bg) center/cover no-repeat; opacity:0; transform:scale(1.05); transition:opacity .8s ease, transform 1.2s ease;}
+.slide .bg-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.slide .overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));}
+.slide.active{opacity:1; transform:scale(1)}
+.nav{position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.2); color:#fff; border:none; width:44px; height:44px; border-radius:50%; cursor:pointer; backdrop-filter: blur(6px)}
+.nav:hover{background:rgba(255,255,255,.35)}
+.nav.prev{left:14px}
+.nav.next{right:14px}
+.dots{position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.5);border:none}
+.dot.active{background:#fbbf24}
+
+/* Ensure texts are visible and centered over banners */
+.hero-container{display:flex;align-items:center;justify-content:center;height:100%}
+.hero-content{text-align:center;color:#fff}
+.project-title{letter-spacing:2px;text-transform:uppercase}

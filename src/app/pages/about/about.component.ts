@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent {
+export class AboutComponent implements AfterViewInit {
   features = [
     {
       icon: '🚀',
@@ -41,4 +42,20 @@ export class AboutComponent {
       description: 'Access state-of-the-art computing resources and cloud platforms for your hackathon projects.'
     }
   ];
+
+  ngAfterViewInit(): void {
+    this.revealOnScroll();
+  }
+
+  @HostListener('window:scroll')
+  revealOnScroll() {
+    const revealEls = document.querySelectorAll<HTMLElement>('[data-reveal]');
+    const trigger = window.innerHeight * 0.88;
+    revealEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < trigger) {
+        el.classList.add('reveal-in');
+      }
+    });
+  }
 }

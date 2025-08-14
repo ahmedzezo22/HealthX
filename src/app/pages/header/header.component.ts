@@ -1,16 +1,27 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '../../pipes/translate.pipe';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   isMenuOpen = false;
   isScrolled = false;
+  currentLang = 'ar';
+
+  constructor(private translationService: TranslationService) {}
+
+  ngOnInit() {
+    this.translationService.currentLang$.subscribe(lang => {
+      this.currentLang = lang;
+    });
+  }
 
   @HostListener('window:scroll')
   onWindowScroll() {
@@ -28,5 +39,9 @@ export class HeaderComponent {
   scrollToSection(sectionId: string) {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
     this.closeMenu();
+  }
+
+  setLanguage(lang: string) {
+    this.translationService.setLanguage(lang);
   }
 }
