@@ -14,28 +14,29 @@ import { TranslatePipe } from '../pipes/translate.pipe';
         <div class="process-grid">
           <!-- Step 1: Announcement and Registration -->
           <div class="process-card" data-reveal="slide-right">
-            <div class="icon-circle"></div>
+            <div class="icon-circle"><span class="text-number">01</span></div>
             <h3 class="card-title">{{ 'PARTICIPATE.STEP1_TITLE' | translate }}</h3>
             <p class="card-description">{{ 'PARTICIPATE.STEP1_DESC' | translate }}</p>
           </div>
 
           <!-- Step 2: Receiving Research Proposals -->
           <div class="process-card" data-reveal="slide-left">
-            <div class="icon-circle"></div>
+            <div class="icon-circle"><span class="text-number">02</span></div>
             <h3 class="card-title">{{ 'PARTICIPATE.STEP2_TITLE' | translate }}</h3>
             <p class="card-description">{{ 'PARTICIPATE.STEP2_DESC' | translate }}</p>
           </div>
 
           <!-- Step 3: Initial Screening of Proposals -->
           <div class="process-card" data-reveal="slide-right">
-            <div class="icon-circle"></div>
+            <div class="icon-circle"><span class="text-number">03</span></div>
             <h3 class="card-title">{{ 'PARTICIPATE.STEP3_TITLE' | translate }}</h3>
             <p class="card-description">{{ 'PARTICIPATE.STEP3_DESC' | translate }}</p>
           </div>
 
+
           <!-- Step 4: Evaluation and Selection of Winners -->
           <div class="process-card" data-reveal="slide-left">
-            <div class="icon-circle"></div>
+            <div class="icon-circle"><span class="text-number">04</span></div>
             <h3 class="card-title">{{ 'PARTICIPATE.STEP4_TITLE' | translate }}</h3>
             <p class="card-description">{{ 'PARTICIPATE.STEP4_DESC' | translate }}</p>
           </div>
@@ -181,6 +182,20 @@ import { TranslatePipe } from '../pipes/translate.pipe';
     [dir="ltr"] .card-title {
       margin-left: auto;
       margin-right: 0;
+    }
+      .text-number {
+      flex-shrink: 0;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2f5fb3, #15336e);
+      color: #fff;
+      font-weight: 900;
+      font-size: 28px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, .1);
     }
   `]
 })
