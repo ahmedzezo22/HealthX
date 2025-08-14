@@ -10,21 +10,38 @@
             />
       </div>
 
-
       <!-- Desktop Navigation -->
       <div class="nav-links">
-        <a (click)="scrollToSection('hero')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Home</a>
-        <a (click)="scrollToSection('about')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">About</a>
-        <!-- <a (click)="scrollToSection('schedule')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Schedule</a> -->
-        <a (click)="scrollToSection('prizes')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Prizes</a>
-        <a (click)="scrollToSection('registration')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Register</a>
-        <a (click)="scrollToSection('contact')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">Contact</a>
+        <a (click)="scrollToSection('hero')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.HOME' | translate }}</a>
+        <a (click)="scrollToSection('about')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.ABOUT' | translate }}</a>
+        <a (click)="scrollToSection('tracks')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.TRACKS' | translate }}</a>
+        <a (click)="scrollToSection('participate')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.PARTICIPATE' | translate }}</a>
+        <a (click)="scrollToSection('registration')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.REGISTER' | translate }}</a>
+        <a (click)="scrollToSection('contact')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.CONTACT' | translate }}</a>
+      </div>
+
+      <!-- Language Toggle -->
+      <div class="language-toggle">
+        <button 
+          (click)="setLanguage('ar')" 
+          [class]="currentLang === 'ar' ? 'lang-btn active' : 'lang-btn'"
+          class="lang-btn"
+        >
+          {{ 'LANGUAGE.AR' | translate }}
+        </button>
+        <button 
+          (click)="setLanguage('en')" 
+          [class]="currentLang === 'en' ? 'lang-btn active' : 'lang-btn'"
+          class="lang-btn"
+        >
+          {{ 'LANGUAGE.EN' | translate }}
+        </button>
       </div>
 
       <!-- Mobile Menu Button -->
       <button (click)="toggleMenu()" class="menu-button">
         <div class="menu-icon">
-          <span [class]="isMenuOpen ? 'line rotate-top' : 'line top'"></span>
+          <span [class]="isMenuOpen ? 'line rotate-top' : 'line'"></span>
           <span [class]="isMenuOpen ? 'line hidden' : 'line middle'"></span>
           <span [class]="isMenuOpen ? 'line rotate-bottom' : 'line bottom'"></span>
         </div>
@@ -33,12 +50,22 @@
 
     <!-- Mobile Menu -->
     <div [class]="isMenuOpen ? 'mobile-menu open' : 'mobile-menu'">
-      <a (click)="scrollToSection('hero')">Home</a>
-      <a (click)="scrollToSection('about')">About</a>
-      <!-- <a (click)="scrollToSection('schedule')">Schedule</a> -->
-      <a (click)="scrollToSection('prizes')">Prizes</a>
-      <a (click)="scrollToSection('registration')">Register</a>
-      <a (click)="scrollToSection('contact')">Contact</a>
+      <a (click)="scrollToSection('hero')">{{ 'HEADER.HOME' | translate }}</a>
+      <a (click)="scrollToSection('about')">{{ 'HEADER.ABOUT' | translate }}</a>
+      <a (click)="scrollToSection('tracks')">{{ 'HEADER.TRACKS' | translate }}</a>
+      <a (click)="scrollToSection('participate')">{{ 'HEADER.PARTICIPATE' | translate }}</a>
+      <a (click)="scrollToSection('registration')">{{ 'HEADER.REGISTER' | translate }}</a>
+      <a (click)="scrollToSection('contact')">{{ 'HEADER.CONTACT' | translate }}</a>
+      
+      <!-- Mobile Language Toggle -->
+      <div class="mobile-language-toggle">
+        <button (click)="setLanguage('ar')" [class]="currentLang === 'ar' ? 'lang-btn active' : 'lang-btn'" class="lang-btn">
+          {{ 'LANGUAGE.AR' | translate }}
+        </button>
+        <button (click)="setLanguage('en')" [class]="currentLang === 'en' ? 'lang-btn active' : 'lang-btn'" class="lang-btn">
+          {{ 'LANGUAGE.EN' | translate }}
+        </button>
+      </div>
     </div>
   </nav>
 </header>

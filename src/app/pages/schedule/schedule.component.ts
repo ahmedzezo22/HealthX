@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 interface ScheduleItem {
   time: string;
@@ -17,7 +18,7 @@ interface DaySchedule {
 @Component({
   selector: 'app-schedule',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.scss']
 })

@@ -35,3 +35,182 @@ body {
     @apply text-xl text-gray-600 mb-12;
   }
 }
+
+/* ===== Global Reveal Animations ===== */
+:root{ --reveal-distance: 18px; --reveal-duration: .7s; --reveal-ease: cubic-bezier(.2,.8,.2,1); }
+[data-reveal]{
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition: opacity var(--reveal-duration) var(--reveal-ease), transform var(--reveal-duration) var(--reveal-ease);
+  will-change: opacity, transform;
+}
+.is-revealed{ opacity: 1 !important; transform: none !important; }
+
+/* Variants */
+[data-reveal="fade-in"]{ transform: none; }
+[data-reveal="fade-up"]{ transform: translateY(var(--reveal-distance)); }
+[data-reveal="fade-down"]{ transform: translateY(calc(var(--reveal-distance) * -1)); }
+[data-reveal="slide-left"]{ transform: translateX(var(--reveal-distance)); }
+[data-reveal="slide-right"]{ transform: translateX(calc(var(--reveal-distance) * -1)); }
+[data-reveal="scale-in"]{ transform: scale(.95); }
+
+@media (prefers-reduced-motion: reduce){
+  [data-reveal]{ transition: none; transform: none; opacity: 1; }
+}
+
+/* Stagger helper: apply to a container to cascade delays for its revealed children */
+.stagger > [data-reveal]{ transition-delay: 0s; }
+.stagger > [data-reveal]:nth-child(2){ transition-delay: .07s; }
+.stagger > [data-reveal]:nth-child(3){ transition-delay: .14s; }
+.stagger > [data-reveal]:nth-child(4){ transition-delay: .21s; }
+.stagger > [data-reveal]:nth-child(5){ transition-delay: .28s; }
+.stagger > [data-reveal]:nth-child(6){ transition-delay: .35s; }
+.stagger > [data-reveal]:nth-child(7){ transition-delay: .42s; }
+.stagger > [data-reveal]:nth-child(8){ transition-delay: .49s; }
+.stagger > [data-reveal]:nth-child(9){ transition-delay: .56s; }
+.stagger > [data-reveal]:nth-child(10){ transition-delay: .63s; }
+.stagger > [data-reveal]:nth-child(11){ transition-delay: .70s; }
+.stagger > [data-reveal]:nth-child(12){ transition-delay: .77s; }
+
+/* ===== Hover Tilt (card parallax) ===== */
+.tilt{
+  --tilt-rotate-x: 0deg;
+  --tilt-rotate-y: 0deg;
+  --tilt-translate: 0px;
+  transform: perspective(800px) rotateX(var(--tilt-rotate-x)) rotateY(var(--tilt-rotate-y)) translateZ(0);
+  transition: transform .15s ease, box-shadow .2s ease;
+  will-change: transform;
+}
+.tilt:hover{
+  box-shadow: 0 14px 30px rgba(0,0,0,.18);
+}
+
+/* ===== Video Dialog Modal ===== */
+.custom-video-dialog .mat-mdc-dialog-container {
+  background: rgba(0, 0, 0, 0.95);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.custom-video-dialog .mat-mdc-dialog-surface {
+  background: transparent;
+  padding: 0;
+}
+
+.custom-video-dialog .video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.custom-video-dialog .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.custom-video-dialog .dialog-actions {
+  padding: 16px;
+  text-align: right;
+}
+
+.custom-video-dialog .close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-video-dialog .close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== RTL/LTR Language Support ===== */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .language-toggle {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-buttons {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .countdown-timer {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .overview-grid {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .goals-board {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .step {
+  text-align: right;
+}
+
+[dir="rtl"] .faq-item {
+  text-align: right;
+}
+
+[dir="rtl"] .contact-form {
+  text-align: right;
+}
+
+[dir="ltr"] {
+  text-align: left;
+}
+
+[dir="ltr"] .nav-links {
+  flex-direction: row;
+}
+
+[dir="ltr"] .language-toggle {
+  flex-direction: row;
+}
+
+[dir="ltr"] .hero-buttons {
+  flex-direction: row;
+}
+
+[dir="ltr"] .countdown-timer {
+  flex-direction: row;
+}
+
+[dir="ltr"] .overview-grid {
+  flex-direction: row;
+}
+
+[dir="ltr"] .goals-board {
+  flex-direction: row;
+}
+
+[dir="ltr"] .step {
+  text-align: left;
+}
+
+[dir="ltr"] .faq-item {
+  text-align: left;
+}
+
+[dir="ltr"] .contact-form {
+  text-align: left;
+}

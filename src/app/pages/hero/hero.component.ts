@@ -2,19 +2,26 @@ import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountUpModule } from 'ngx-countup';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 import { VideoDialogComponent } from '../videoDialog/video-dialog.component';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule,CountUpModule],
+  imports: [CommonModule, CountUpModule, MatDialogModule, TranslatePipe],
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements OnInit, OnDestroy {
-  constructor(private dialog: MatDialog, private sanitizer: DomSanitizer) {}
-videoUrl: any;
+  constructor(
+    private dialog: MatDialog, 
+    private sanitizer: DomSanitizer,
+    private translationService: TranslationService
+  ) {}
+  
+  videoUrl: any;
   daysRemaining = 0;
   hoursRemaining = 0;
   minutesRemaining = 0;
@@ -27,19 +34,40 @@ videoUrl: any;
     { value: 500, label: 'Participants' }
   ];
   
- 
-
   private interval: any;
+  private activeIndex = 0;
+  private autoTimer: any;
 
   ngOnInit() {
     this.startCountdown();
-    
+    this.startAutoSlide();
   }
 
   ngOnDestroy() {
     if (this.interval) {
       clearInterval(this.interval);
     }
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
+  }
+
+  // Slider logic
+  startAutoSlide(){
+    this.autoTimer = setInterval(()=> this.nextSlide(), 7000);
+  }
+  clearAuto(){ if(this.autoTimer){ clearInterval(this.autoTimer); }}
+  nextSlide(){ this.switchTo((this.activeIndex+1)%3); }
+  prevSlide(){ this.switchTo((this.activeIndex+2)%3); }
+  goTo(i:number){ this.switchTo(i); }
+  private switchTo(i:number){
+    this.activeIndex = i;
+    const slides = Array.from(document.querySelectorAll<HTMLElement>('.slide'));
+    const dots = Array.from(document.querySelectorAll<HTMLElement>('.dot'));
+    slides.forEach((s,idx)=> s.classList.toggle('active', idx===i));
+    dots.forEach((d,idx)=> d.classList.toggle('active', idx===i));
+    this.clearAuto();
+    this.startAutoSlide();
   }
 
    startCountdown() {
@@ -65,12 +93,14 @@ videoUrl: any;
     }, 1000);
   }
 
-
-
   scrollToRegistration() {
-    document.getElementById('registration')?.scrollIntoView({ behavior: 'smooth' });
+    const registrationElement = document.getElementById('registration');
+    if (registrationElement) {
+      registrationElement.scrollIntoView({ behavior: 'smooth' });
+    }
   }
-   animateCountdownItem(event: any) {
+  
+  animateCountdownItem(event: any) {
     event.target.classList.add('hovered');
   }
 
@@ -78,13 +108,14 @@ videoUrl: any;
     event.target.classList.remove('hovered');
   }
  
-scrollToNextSection() {
-  const nextSection = document.getElementById('about');
-  if (nextSection) {
-    nextSection.scrollIntoView({ behavior: 'smooth' });
+  scrollToNextSection() {
+    const nextSection = document.getElementById('about');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
   }
-}
- openVideoModal(videoLink: string) {
+  
+  openVideoModal(videoLink: string) {
     const safeUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoLink + '?autoplay=1');
 
     this.dialog.open(VideoDialogComponent, {
@@ -93,6 +124,5 @@ scrollToNextSection() {
       panelClass: 'custom-video-dialog'
     });
   }
-  
 }
 

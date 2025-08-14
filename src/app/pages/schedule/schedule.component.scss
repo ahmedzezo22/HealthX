@@ -1,0 +1,16 @@
+.timeline-section{background:#eef2f7;padding:50px 0}
+.timeline-header{text-align:center;margin-bottom:18px}
+.timeline-header .title{font-size:34px;font-weight:900;color:#0b1f3f;margin:0}
+.timeline-wrap{max-width:1150px;margin:0 auto;padding:0 16px}
+.stage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.stage-card{background:#fff;border-radius:16px;border:1px solid #dbe7ff;box-shadow:0 10px 22px rgba(0,0,0,.08);padding:16px 14px 18px;position:relative}
+.stage-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.stage-head .dot{width:12px;height:12px;border-radius:50%;background:#2f5fb3;box-shadow:0 0 0 4px rgba(47,95,179,.15)}
+.stage-title{margin:0;font-size:18px;font-weight:900;color:#0b1f3f}
+.stage-sub{margin-right:auto;color:#6b7280;font-weight:700}
+.stage-body{color:#334155;line-height:1.9}
+.stage-footer{margin-top:10px;font-weight:800;color:#15336e}
+
+@media(max-width:720px){.timeline-header .title{font-size:28px}}
+
+

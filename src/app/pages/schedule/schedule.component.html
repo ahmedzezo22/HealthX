@@ -1,93 +1,61 @@
-<section id="schedule">
-  <div class="container">
-    <!-- Section Header -->
-    <div class="section-header animate-fade-in">
-      <h2 class="section-title">Event Schedule</h2>
-      <p class="section-subtitle">
-        Three action-packed days of innovation, learning, and collaboration. Plan your hackathon journey.
-      </p>
-    </div>
+<section id="timeline" class="timeline-section"  data-reveal>
+  <div class="timeline-header">
+    <h2 class="title">{{ 'SCHEDULE.TITLE' | translate }}</h2>
+  </div>
 
-    <!-- Day Selector -->
-    <div class="day-selector-wrapper">
-      <div class="day-selector">
-        <button 
-          *ngFor="let day of schedule; let i = index"
-          (click)="selectDay(i)"
-          [class]="selectedDay === i ? 'day-button active' : 'day-button'"
-        >
-          {{ day.day }}
-        </button>
-      </div>
-    </div>
-
-    <!-- Schedule Content -->
-    <div class="schedule-content">
-      <div class="day-card animate-slide-up">
-        <!-- Day Header -->
-        <div class="day-header">
-          <h3>{{ schedule[selectedDay].day }}</h3>
-          <p>{{ schedule[selectedDay].date }}</p>
+  <div class="timeline-wrap">
+    <div class="stage-grid">
+      <!-- Stage 1 -->
+      <article class="stage-card tilt" data-reveal="slide-right">
+        <header class="stage-head">
+          <div class="dot"></div>
+          <h3 class="stage-title">{{ 'SCHEDULE.STAGE1' | translate }}</h3>
+          <div class="stage-sub">{{ 'SCHEDULE.STAGE1_SUB' | translate }}</div>
+        </header>
+        <div class="stage-body">
+          <p>{{ 'SCHEDULE.STAGE1_DESC' | translate }}</p>
         </div>
+        <footer class="stage-footer">{{ 'SCHEDULE.STAGE1_TIME' | translate }}</footer>
+      </article>
 
-        <!-- Timeline -->
-        <div class="timeline">
-          <!-- Timeline Line -->
-          <div class="timeline-line"></div>
-
-          <!-- Events -->
-          <div class="events-list">
-            <div 
-              *ngFor="let event of schedule[selectedDay].events; let i = index" 
-              class="event-item"
-            >
-              <!-- Time -->
-              <div class="event-time">
-                <div>{{ event.time }}</div>
-              </div>
-
-              <!-- Timeline Dot -->
-              <div class="timeline-dot"></div>
-
-              <!-- Event Card -->
-              <div class="event-card" [ngClass]="getEventTypeClass(event.type)">
-                <div class="event-card-content">
-                  <span class="event-icon">{{ getEventTypeIcon(event.type) }}</span>
-                  <div>
-                    <h4>{{ event.title }}</h4>
-                    <p>{{ event.description }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Stage 2 -->
+      <article class="stage-card tilt" data-reveal="fade-up">
+        <header class="stage-head">
+          <div class="dot"></div>
+          <h3 class="stage-title">{{ 'SCHEDULE.STAGE2' | translate }}</h3>
+          <div class="stage-sub">{{ 'SCHEDULE.STAGE2_SUB' | translate }}</div>
+        </header>
+        <div class="stage-body">
+          <p>{{ 'SCHEDULE.STAGE2_DESC' | translate }}</p>
         </div>
-      </div>
-    </div>
+        <footer class="stage-footer">{{ 'SCHEDULE.STAGE2_TIME' | translate }}</footer>
+      </article>
 
-    <!-- Legend -->
-    <div class="legend">
-      <div class="legend-card">
-        <h4>Event Types</h4>
-        <div class="legend-items">
-          <div class="legend-item">
-            <div class="legend-color primary"></div>
-            <span>Events</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-color accent"></div>
-            <span>Workshops</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-color gray"></div>
-            <span>Breaks</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-color purple"></div>
-            <span>Presentations</span>
-          </div>
+      <!-- Stage 3 -->
+      <article class="stage-card tilt" data-reveal="slide-left">
+        <header class="stage-head">
+          <div class="dot"></div>
+          <h3 class="stage-title">{{ 'SCHEDULE.STAGE3' | translate }}</h3>
+          <div class="stage-sub">{{ 'SCHEDULE.STAGE3_SUB' | translate }}</div>
+        </header>
+        <div class="stage-body">
+          <p>{{ 'SCHEDULE.STAGE3_DESC' | translate }}</p>
         </div>
-      </div>
+        <footer class="stage-footer">{{ 'SCHEDULE.STAGE3_TIME' | translate }}</footer>
+      </article>
+
+      <!-- Stage 4 -->
+      <article class="stage-card tilt" data-reveal="slide-left">
+        <header class="stage-head">
+          <div class="dot"></div>
+          <h3 class="stage-title">{{ 'SCHEDULE.STAGE4' | translate }}</h3>
+          <div class="stage-sub">{{ 'SCHEDULE.STAGE4_SUB' | translate }}</div>
+        </header>
+        <div class="stage-body">
+          <p>{{ 'SCHEDULE.STAGE4_DESC' | translate }}</p>
+        </div>
+        <footer class="stage-footer">{{ 'SCHEDULE.STAGE4_TIME' | translate }}</footer>
+      </article>
     </div>
   </div>
 </section>
