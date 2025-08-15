@@ -1,0 +1,150 @@
+<div class="contact-management">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.CONTACT' | translate }}</h1>
+    <p>{{ 'DASHBOARD.CONTACT_DESCRIPTION' | translate }}</p>
+  </div>
+
+  <!-- Content Preview -->
+  <div class="content-preview">
+    <h2>{{ 'DASHBOARD.PREVIEW' | translate }}</h2>
+    <div class="preview-content">
+      <div class="contact-header">
+        <h3>{{ contactData.title }}</h3>
+        <p>{{ contactData.subtitle }}</p>
+      </div>
+      
+      <div class="contact-info-grid">
+        <div class="contact-info-item" *ngFor="let info of contactData.contactInfo; let i = index">
+          <div class="info-icon" [class]="'icon-' + info.type">
+            <span *ngIf="info.type === 'address'">📍</span>
+            <span *ngIf="info.type === 'email'">✉️</span>
+            <span *ngIf="info.type === 'phone'">📞</span>
+            <span *ngIf="info.type === 'hours'">🕒</span>
+            <span *ngIf="info.type === 'text'">ℹ️</span>
+          </div>
+          <div class="info-content">
+            <h4>{{ info.title }}</h4>
+            <p>{{ info.value }}</p>
+          </div>
+          <div class="info-status" [class.active]="info.isActive">
+            {{ info.isActive ? ('DASHBOARD.ACTIVE' | translate) : ('DASHBOARD.INACTIVE' | translate) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Management Interface -->
+  <div class="management-interface">
+    <div class="interface-header">
+      <h2>{{ 'DASHBOARD.MANAGE_CONTENT' | translate }}</h2>
+      <div class="interface-actions">
+        <button 
+          *ngIf="!isEditing" 
+          class="btn-edit" 
+          (click)="startEditing()"
+        >
+          {{ 'DASHBOARD.EDIT' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-save" 
+          (click)="saveChanges()"
+        >
+          {{ 'DASHBOARD.SAVE' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-cancel" 
+          (click)="cancelEditing()"
+        >
+          {{ 'DASHBOARD.CANCEL' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="edit-form" *ngIf="isEditing">
+      <!-- Header Section -->
+      <div class="form-section">
+        <h3>{{ 'DASHBOARD.HEADER_SECTION' | translate }}</h3>
+        <div class="form-group">
+          <label>{{ 'DASHBOARD.TITLE' | translate }}</label>
+          <input 
+            type="text" 
+            [(ngModel)]="editedData.title" 
+            class="form-input"
+          />
+        </div>
+        <div class="form-group">
+          <label>{{ 'DASHBOARD.SUBTITLE' | translate }}</label>
+          <textarea 
+            [(ngModel)]="editedData.subtitle" 
+            class="form-textarea"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Contact Info Section -->
+      <div class="form-section">
+        <div class="section-header">
+          <h3>{{ 'DASHBOARD.CONTACT_INFO_SECTION' | translate }}</h3>
+          <button class="btn-add" (click)="addContactInfo()">
+            <span class="add-icon">+</span>
+            {{ 'DASHBOARD.ADD_CONTACT_INFO' | translate }}
+          </button>
+        </div>
+        
+        <div class="contact-info-form">
+          <div class="info-form-item" *ngFor="let info of editedData.contactInfo; let i = index">
+            <div class="info-form-header">
+              <span class="info-number">{{ i + 1 }}</span>
+              <button class="btn-remove" (click)="removeContactInfo(i)">
+                <span class="remove-icon">×</span>
+              </button>
+            </div>
+            
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.INFO_TITLE' | translate }}</label>
+              <input 
+                type="text" 
+                [(ngModel)]="info.title" 
+                class="form-input"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.INFO_VALUE' | translate }}</label>
+              <textarea 
+                [(ngModel)]="info.value" 
+                class="form-textarea"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.INFO_TYPE' | translate }}</label>
+              <select [(ngModel)]="info.type" class="form-select">
+                <option value="text">نص</option>
+                <option value="email">بريد إلكتروني</option>
+                <option value="phone">هاتف</option>
+                <option value="address">عنوان</option>
+                <option value="hours">ساعات</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input 
+                  type="checkbox" 
+                  [(ngModel)]="info.isActive"
+                />
+                {{ 'DASHBOARD.ACTIVE' | translate }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

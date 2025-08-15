@@ -1,0 +1,53 @@
+<div class="projects-container">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.PROJECTS' | translate }}</h1>
+    <p>Monitor and manage hackathon projects</p>
+  </div>
+
+  <div class="projects-content">
+    <div class="projects-grid">
+      <div *ngFor="let project of projects" class="project-card">
+        <div class="project-header">
+          <h3>{{ project.title }}</h3>
+          <span class="project-id">#{{ project.id }}</span>
+        </div>
+        
+        <div class="project-details">
+          <div class="detail-item">
+            <span class="label">Team:</span>
+            <span class="value">{{ project.team }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Track:</span>
+            <span class="value">{{ project.track }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Status:</span>
+            <span class="status-badge" [class]="getStatusClass(project.status)">
+              {{ project.status.replace('-', ' ') | titlecase }}
+            </span>
+          </div>
+        </div>
+        
+        <div class="progress-section">
+          <div class="progress-header">
+            <span class="progress-label">Progress</span>
+            <span class="progress-percentage">{{ project.progress }}%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" 
+                 [style.width.%]="project.progress"
+                 [style.background-color]="getProgressColor(project.progress)">
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-actions">
+          <button class="btn-view">👁️ View</button>
+          <button class="btn-edit">✏️ Edit</button>
+          <button class="btn-delete">🗑️ Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

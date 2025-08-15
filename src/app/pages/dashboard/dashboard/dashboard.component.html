@@ -1,0 +1,88 @@
+<div class="dashboard-container">
+  <!-- Dashboard Header -->
+  <div class="dashboard-header">
+    <h1>{{ 'DASHBOARD.TITLE' | translate }}</h1>
+    <p>{{ 'DASHBOARD.SUBTITLE' | translate }}</p>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">👥</div>
+      <div class="stat-content">
+        <h3>{{ dashboardStats.totalParticipants }}</h3>
+        <p>{{ 'DASHBOARD.TOTAL_PARTICIPANTS' | translate }}</p>
+      </div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-icon">📋</div>
+      <div class="stat-content">
+        <h3>{{ dashboardStats.activeProjects }}</h3>
+        <p>{{ 'DASHBOARD.ACTIVE_PROJECTS' | translate }}</p>
+      </div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-content">
+        <h3>{{ dashboardStats.completedChallenges }}</h3>
+        <p>{{ 'DASHBOARD.COMPLETED_CHALLENGES' | translate }}</p>
+      </div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-icon">💰</div>
+      <div class="stat-content">
+        <h3>${{ dashboardStats.totalPrizes.toLocaleString() }}</h3>
+        <p>{{ 'DASHBOARD.TOTAL_PRIZES' | translate }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Grid -->
+  <div class="dashboard-content">
+    <!-- Quick Actions -->
+    <div class="quick-actions-section">
+      <h2>{{ 'DASHBOARD.QUICK_ACTIONS' | translate }}</h2>
+      <div class="quick-actions-grid">
+        <div 
+          *ngFor="let action of quickActions" 
+          class="action-card"
+          [routerLink]="action.route"
+        >
+          <div class="action-icon">{{ action.icon }}</div>
+          <h3>{{ action.title }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="recent-activities-section">
+      <h2>{{ 'DASHBOARD.RECENT_ACTIVITIES' | translate }}</h2>
+      <div class="activities-list">
+        <div 
+          *ngFor="let activity of recentActivities" 
+          class="activity-item"
+          [class]="'activity-' + activity.type"
+        >
+          <div class="activity-icon">
+            <span *ngIf="activity.type === 'registration'">📝</span>
+            <span *ngIf="activity.type === 'submission'">📤</span>
+            <span *ngIf="activity.type === 'review'">✅</span>
+            <span *ngIf="activity.type === 'winner'">🎉</span>
+          </div>
+          <div class="activity-content">
+            <p class="activity-message">{{ activity.message }}</p>
+            <span class="activity-time">{{ activity.time }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Footer -->
+  <div class="dashboard-footer">
+    <button class="btn-secondary" routerLink="/">{{ 'DASHBOARD.BACK_TO_WEBSITE' | translate }}</button>
+  </div>
+</div>

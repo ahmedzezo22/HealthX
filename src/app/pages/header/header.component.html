@@ -18,6 +18,10 @@
         <a (click)="scrollToSection('participate')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.PARTICIPATE' | translate }}</a>
         <a (click)="scrollToSection('registration')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.REGISTER' | translate }}</a>
         <a (click)="scrollToSection('contact')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.CONTACT' | translate }}</a>
+        <a routerLink="/dashboard" [class]="isScrolled ? 'nav-link scrolled dashboard-link' : 'nav-link dashboard-link'">
+          <span class="dashboard-icon">📊</span>
+          {{ 'HEADER.DASHBOARD' | translate }}
+        </a>
       </div>
 
       <!-- Language Toggle -->
@@ -56,6 +60,10 @@
       <a (click)="scrollToSection('participate')">{{ 'HEADER.PARTICIPATE' | translate }}</a>
       <a (click)="scrollToSection('registration')">{{ 'HEADER.REGISTER' | translate }}</a>
       <a (click)="scrollToSection('contact')">{{ 'HEADER.CONTACT' | translate }}</a>
+      <a routerLink="/dashboard" class="mobile-dashboard-link">
+        <span class="dashboard-icon">📊</span>
+        {{ 'HEADER.DASHBOARD' | translate }}
+      </a>
       
       <!-- Mobile Language Toggle -->
       <div class="mobile-language-toggle">

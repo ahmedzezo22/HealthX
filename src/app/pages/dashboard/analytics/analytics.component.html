@@ -1,0 +1,78 @@
+<div class="analytics-container">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.ANALYTICS' | translate }}</h1>
+    <p>Comprehensive insights into hackathon performance</p>
+  </div>
+
+  <div class="analytics-content">
+    <!-- Key Metrics -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon">📊</div>
+        <div class="metric-content">
+          <h3>{{ analyticsData.totalRegistrations.toLocaleString() }}</h3>
+          <p>Total Registrations</p>
+        </div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">👥</div>
+        <div class="metric-content">
+          <h3>{{ analyticsData.activeParticipants.toLocaleString() }}</h3>
+          <p>Active Participants</p>
+        </div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">✅</div>
+        <div class="metric-content">
+          <h3>{{ analyticsData.completedProjects.toLocaleString() }}</h3>
+          <p>Completed Projects</p>
+        </div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">💰</div>
+        <div class="metric-content">
+          <h3>${{ analyticsData.totalPrizes.toLocaleString() }}</h3>
+          <p>Total Prizes</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Track Distribution -->
+    <div class="chart-section">
+      <h2>Track Distribution</h2>
+      <div class="track-distribution">
+        <div *ngFor="let track of analyticsData.trackDistribution; let i = index" class="track-item">
+          <div class="track-info">
+            <span class="track-name">{{ track.track }}</span>
+            <span class="track-count">{{ track.count }} participants</span>
+          </div>
+          <div class="track-bar">
+            <div class="track-fill" 
+                 [style.width.%]="track.percentage"
+                 [style.background-color]="getTrackColor(i)">
+            </div>
+          </div>
+          <span class="track-percentage">{{ track.percentage }}%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Registrations -->
+    <div class="chart-section">
+      <h2>Monthly Registration Trends</h2>
+      <div class="monthly-chart">
+        <div *ngFor="let month of analyticsData.monthlyRegistrations" class="month-bar">
+          <div class="bar-fill" 
+               [style.height]="(month.count / 300 * 200) + 'px'"
+               [style.background]="'linear-gradient(to top, #3b82f6, #1d4ed8)'">
+          </div>
+          <span class="month-label">{{ month.month }}</span>
+          <span class="month-count">{{ month.count }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

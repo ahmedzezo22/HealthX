@@ -1,0 +1,102 @@
+<div class="faq-management">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.FAQ_MANAGEMENT' | translate }}</h1>
+    <p>{{ 'DASHBOARD.FAQ_DESCRIPTION' | translate }}</p>
+  </div>
+
+  <!-- Management Actions -->
+  <div class="management-actions">
+    <button class="btn-add" (click)="startAdding()" *ngIf="!isAdding">
+      <span class="add-icon">+</span>
+      {{ 'DASHBOARD.ADD_NEW' | translate }}
+    </button>
+  </div>
+
+  <!-- Add New FAQ Form -->
+  <div class="add-form" *ngIf="isAdding">
+    <h3>{{ 'DASHBOARD.ADD_NEW' | translate }}</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.QUESTION' | translate }}</label>
+        <textarea [(ngModel)]="newItem.question" class="form-textarea" rows="2"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.ANSWER' | translate }}</label>
+        <textarea [(ngModel)]="newItem.answer" class="form-textarea" rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.CATEGORY' | translate }}</label>
+        <select [(ngModel)]="newItem.category" class="form-select">
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" (click)="saveItem()">{{ 'DASHBOARD.SAVE' | translate }}</button>
+      <button class="btn-cancel" (click)="cancelAction()">{{ 'DASHBOARD.CANCEL' | translate }}</button>
+    </div>
+  </div>
+
+  <!-- Edit FAQ Form -->
+  <div class="edit-form" *ngIf="isEditing && editingItem">
+    <h3>{{ 'DASHBOARD.EDIT' | translate }}</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.QUESTION' | translate }}</label>
+        <textarea [(ngModel)]="editingItem.question" class="form-textarea" rows="2"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.ANSWER' | translate }}</label>
+        <textarea [(ngModel)]="editingItem.answer" class="form-textarea" rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.CATEGORY' | translate }}</label>
+        <select [(ngModel)]="editingItem.category" class="form-select">
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" (click)="updateItem()">{{ 'DASHBOARD.SAVE' | translate }}</button>
+      <button class="btn-cancel" (click)="cancelAction()">{{ 'DASHBOARD.CANCEL' | translate }}</button>
+    </div>
+  </div>
+
+  <!-- FAQ List -->
+  <div class="faq-list">
+    <div class="faq-item" *ngFor="let item of faqItems">
+      <div class="faq-header" (click)="toggleItem(item.id)">
+        <div class="faq-info">
+          <span class="faq-order">{{ item.order }}</span>
+          <span class="faq-category">{{ item.category }}</span>
+          <span class="faq-question">{{ item.question }}</span>
+        </div>
+        <div class="faq-controls">
+          <span class="expand-icon">{{ expandedItems.has(item.id) ? '−' : '+' }}</span>
+          <span class="status-badge" [class.active]="item.isActive" [class.inactive]="!item.isActive">
+            {{ item.isActive ? ('DASHBOARD.ACTIVE' | translate) : ('DASHBOARD.INACTIVE' | translate) }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="faq-content" *ngIf="expandedItems.has(item.id)">
+        <div class="faq-answer">{{ item.answer }}</div>
+        <div class="faq-actions">
+          <button class="btn-edit" (click)="startEditing(item)">{{ 'DASHBOARD.EDIT' | translate }}</button>
+          <button class="btn-toggle" (click)="toggleStatus(item)">
+            {{ 'DASHBOARD.TOGGLE_STATUS' | translate }}
+          </button>
+          <button class="btn-delete" (click)="deleteItem(item.id)">{{ 'DASHBOARD.DELETE' | translate }}</button>
+          <div class="order-controls">
+            <button class="btn-order" (click)="moveItem(item, 'up')" [disabled]="item.order === 1">
+              {{ 'DASHBOARD.MOVE_UP' | translate }}
+            </button>
+            <button class="btn-order" (click)="moveItem(item, 'down')" [disabled]="item.order === faqItems.length">
+              {{ 'DASHBOARD.MOVE_DOWN' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="banner-management">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.BANNER_MANAGEMENT' | translate }}</h1>
+    <p>{{ 'DASHBOARD.BANNER_DESCRIPTION' | translate }}</p>
+  </div>
+
+  <div class="banner-preview">
+    <h2>{{ 'DASHBOARD.PREVIEW' | translate }}</h2>
+    <div class="banner-display">
+      <div class="banner-content">
+        <h1>{{ bannerData.title }}</h1>
+        <p>{{ bannerData.subtitle }}</p>
+        <div class="banner-buttons">
+          <button class="btn-primary">{{ bannerData.buttonText }}</button>
+          <a href="{{ bannerData.videoUrl }}" target="_blank" class="btn-secondary">
+            {{ bannerData.videoButtonText }}
+          </a>
+        </div>
+      </div>
+      <div class="banner-image">
+        <img [src]="bannerData.imageUrl" alt="Banner" />
+      </div>
+    </div>
+  </div>
+
+  <div class="banner-editor">
+    <div class="editor-header">
+      <h2>{{ 'DASHBOARD.EDIT_CONTENT' | translate }}</h2>
+      <div class="editor-actions">
+        <button 
+          *ngIf="!isEditing" 
+          class="btn-edit" 
+          (click)="startEditing()"
+        >
+          {{ 'DASHBOARD.EDIT' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-save" 
+          (click)="saveChanges()"
+        >
+          {{ 'DASHBOARD.SAVE' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-cancel" 
+          (click)="cancelEditing()"
+        >
+          {{ 'DASHBOARD.CANCEL' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="editor-form" *ngIf="isEditing">
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.TITLE' | translate }}</label>
+        <input 
+          type="text" 
+          [(ngModel)]="editedData.title" 
+          class="form-input"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.SUBTITLE' | translate }}</label>
+        <textarea 
+          [(ngModel)]="editedData.subtitle" 
+          class="form-textarea"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.BUTTON_TEXT' | translate }}</label>
+        <input 
+          type="text" 
+          [(ngModel)]="editedData.buttonText" 
+          class="form-input"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.VIDEO_BUTTON_TEXT' | translate }}</label>
+        <input 
+          type="text" 
+          [(ngModel)]="editedData.videoButtonText" 
+          class="form-input"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.VIDEO_URL' | translate }}</label>
+        <input 
+          type="url" 
+          [(ngModel)]="editedData.videoUrl" 
+          class="form-input"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.BANNER_IMAGE' | translate }}</label>
+        <div class="image-upload">
+          <img [src]="editedData.imageUrl" alt="Current Banner" class="current-image" />
+          <input 
+            type="file" 
+            accept="image/*" 
+            (change)="uploadImage($event)"
+            class="file-input"
+          />
+          <button type="button" class="btn-upload">
+            {{ 'DASHBOARD.UPLOAD_NEW_IMAGE' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

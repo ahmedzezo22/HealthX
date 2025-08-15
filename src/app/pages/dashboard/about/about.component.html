@@ -1,0 +1,121 @@
+<div class="about-management">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.ABOUT_MANAGEMENT' | translate }}</h1>
+    <p>{{ 'DASHBOARD.ABOUT_DESCRIPTION' | translate }}</p>
+  </div>
+
+  <!-- Content Preview -->
+  <div class="content-preview">
+    <h2>{{ 'DASHBOARD.PREVIEW' | translate }}</h2>
+    <div class="preview-content">
+      <div class="overview-section">
+        <h3>{{ aboutData.overviewTitle }}</h3>
+        <p>{{ aboutData.overviewDesc }}</p>
+      </div>
+      
+      <div class="goals-section">
+        <h3>{{ aboutData.goalsTitle }}</h3>
+        <div class="goals-grid">
+          <div class="goal-card" *ngFor="let goal of aboutData.goals; let i = index">
+            <div class="goal-number">{{ i + 1 }}</div>
+            <h4>{{ goal.title }}</h4>
+            <p>{{ goal.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Management Interface -->
+  <div class="management-interface">
+    <div class="interface-header">
+      <h2>{{ 'DASHBOARD.MANAGE_CONTENT' | translate }}</h2>
+      <div class="interface-actions">
+        <button 
+          *ngIf="!isEditing" 
+          class="btn-edit" 
+          (click)="startEditing()"
+        >
+          {{ 'DASHBOARD.EDIT' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-save" 
+          (click)="saveChanges()"
+        >
+          {{ 'DASHBOARD.SAVE' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-cancel" 
+          (click)="cancelEditing()"
+        >
+          {{ 'DASHBOARD.CANCEL' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="edit-form" *ngIf="isEditing">
+      <!-- Overview Section -->
+      <div class="form-section">
+        <h3>{{ 'DASHBOARD.OVERVIEW_SECTION' | translate }}</h3>
+        <div class="form-group">
+          <label>{{ 'DASHBOARD.OVERVIEW_TITLE' | translate }}</label>
+          <input 
+            type="text" 
+            [(ngModel)]="editedData.overviewTitle" 
+            class="form-input"
+          />
+        </div>
+        <div class="form-group">
+          <label>{{ 'DASHBOARD.OVERVIEW_DESCRIPTION' | translate }}</label>
+                     <textarea 
+             [(ngModel)]="editedData.overviewDesc" 
+             class="form-textarea"
+             rows="4"
+           ></textarea>
+        </div>
+      </div>
+
+      <!-- Goals Section -->
+      <div class="form-section">
+        <div class="section-header">
+          <h3>{{ 'DASHBOARD.GOALS_SECTION' | translate }}</h3>
+          <button class="btn-add" (click)="addGoal()">
+            <span class="add-icon">+</span>
+            {{ 'DASHBOARD.ADD_GOAL' | translate }}
+          </button>
+        </div>
+        
+        <div class="goals-form">
+          <div class="goal-form-item" *ngFor="let goal of editedData.goals; let i = index">
+            <div class="goal-header">
+              <span class="goal-number">{{ i + 1 }}</span>
+              <button class="btn-remove" (click)="removeGoal(i)">
+                <span class="remove-icon">×</span>
+              </button>
+            </div>
+            
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.GOAL_TITLE' | translate }}</label>
+              <input 
+                type="text" 
+                [(ngModel)]="goal.title" 
+                class="form-input"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.GOAL_DESCRIPTION' | translate }}</label>
+              <textarea 
+                [(ngModel)]="goal.description" 
+                class="form-textarea"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

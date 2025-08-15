@@ -1,0 +1,72 @@
+<div class="dashboard-layout" [attr.dir]="isRTL ? 'rtl' : 'ltr'">
+  <!-- Dashboard Header -->
+  <header class="dashboard-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" (click)="toggleSidebar()">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <h1 class="dashboard-title">{{ 'DASHBOARD.ADMIN_PANEL' | translate }}</h1>
+    </div>
+    
+    <div class="header-right">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button 
+          class="lang-btn" 
+          [class.active]="currentLang === 'ar'"
+          (click)="setLanguage('ar')"
+        >
+          العربية
+        </button>
+        <button 
+          class="lang-btn" 
+          [class.active]="currentLang === 'en'"
+          (click)="setLanguage('en')"
+        >
+          English
+        </button>
+      </div>
+      
+      <div class="user-info">
+        <span class="user-avatar">👤</span>
+        <span class="user-name">Admin User</span>
+      </div>
+      <button class="logout-btn" (click)="logout()">
+        <span class="logout-icon">🚪</span>
+        {{ 'DASHBOARD.LOGOUT' | translate }}
+      </button>
+    </div>
+  </header>
+
+  <!-- Dashboard Sidebar -->
+  <aside class="dashboard-sidebar" [class.collapsed]="!isSidebarOpen">
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
+        <li *ngFor="let item of navigationItems" class="nav-item">
+          <a 
+            [routerLink]="item.route" 
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <span class="nav-icon">{{ item.icon }}</span>
+            <span class="nav-label" *ngIf="isSidebarOpen">{{ item.label | translate }}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <div class="sidebar-footer" *ngIf="isSidebarOpen">
+      <button class="btn-back-website" (click)="goToWebsite()">
+        <span class="back-icon">🏠</span>
+        {{ 'DASHBOARD.BACK_TO_WEBSITE' | translate }}
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="dashboard-main" [class.sidebar-collapsed]="!isSidebarOpen">
+    <router-outlet></router-outlet>
+  </main>
+</div>
