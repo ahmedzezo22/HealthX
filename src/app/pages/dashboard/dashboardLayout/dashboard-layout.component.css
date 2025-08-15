@@ -1,3 +1,20 @@
+/* ===== JANNA-LT FONT DECLARATIONS ===== */
+@font-face {
+  font-family: 'Janna-LT';
+  src: url('../../../../assets/fonts/Janna-LT-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Janna-LT';
+  src: url('../../../../assets/fonts/Janna-LT-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Dashboard Layout - Completely isolated from main website */
 .dashboard-layout {
   display: flex;
@@ -12,11 +29,13 @@
   z-index: 9999;
   overflow: hidden;
   width: 100vw;
+  font-family: 'Janna-LT', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Ensure dashboard takes full viewport */
 .dashboard-layout * {
   box-sizing: border-box;
+  font-family: 'Janna-LT', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Additional isolation rules */
