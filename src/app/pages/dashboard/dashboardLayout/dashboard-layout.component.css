@@ -277,7 +277,7 @@
 .dashboard-main {
   flex: 1;
   margin-left: 250px;
-  margin-top: 70px;
+  margin-top: 0px;
   padding: 2rem;
   transition: margin-left 0.3s ease;
   overflow-y: auto;
@@ -296,17 +296,42 @@
   margin-left: 0;
 }
 
-/* RTL Support */
+/* Additional fixes for content spacing */
+.dashboard-main > div:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.dashboard-main .page-header,
+.dashboard-main .dashboard-header {
+  display: none !important;
+}
+
+.dashboard-main .analytics-container,
+.dashboard-main .about-management,
+.dashboard-main .banner-management,
+.dashboard-main .dashboard-container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* RTL Support - Fixed positioning and transforms */
 .dashboard-layout[dir="rtl"] .dashboard-sidebar {
   left: auto;
   right: 0;
   border-left: none;
   border-right: 2px solid #e2e8f0;
+  transform: translateX(0);
+}
+
+.dashboard-layout[dir="rtl"] .dashboard-sidebar.collapsed {
+  transform: translateX(250px);
 }
 
 .dashboard-layout[dir="rtl"] .dashboard-main {
   margin-left: 0;
   margin-right: 250px;
+  transition: margin-right 0.3s ease;
 }
 
 .dashboard-layout[dir="rtl"] .dashboard-main.sidebar-collapsed {
@@ -325,6 +350,24 @@
 
 .dashboard-layout[dir="rtl"] .sidebar-toggle {
   transform: scaleX(-1);
+}
+
+/* Additional RTL fixes for better Arabic support */
+.dashboard-layout[dir="rtl"] .header-left {
+  flex-direction: row-reverse;
+}
+
+.dashboard-layout[dir="rtl"] .header-right {
+  flex-direction: row-reverse;
+}
+
+.dashboard-layout[dir="rtl"] .language-switcher {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+.dashboard-layout[dir="rtl"] .user-info {
+  flex-direction: row-reverse;
 }
 
 /* Responsive Design */
@@ -368,7 +411,7 @@
   
   .dashboard-main {
     margin-left: 0;
-    margin-top: 70px;
+    /* margin-top: 70px; */
     padding: 1rem;
     height: calc(100vh - 70px);
   }
@@ -377,7 +420,35 @@
     display: block !important;
   }
   
+  /* RTL mobile support */
+  .dashboard-layout[dir="rtl"] .dashboard-sidebar {
+    transform: translateX(100%);
+  }
+  
+  .dashboard-layout[dir="rtl"] .dashboard-sidebar.collapsed {
+    transform: translateX(100%);
+  }
+  
+  .dashboard-layout[dir="rtl"] .dashboard-sidebar:not(.collapsed) {
+    transform: translateX(0);
+  }
+  
   .dashboard-layout[dir="rtl"] .dashboard-main {
     margin-right: 0;
   }
+  
+  /* RTL mobile header adjustments */
+  .dashboard-layout[dir="rtl"] .header-left {
+    flex-direction: row;
+  }
+  
+  .dashboard-layout[dir="rtl"] .header-right {
+    flex-direction: row;
+  }
+  
+  .dashboard-layout[dir="rtl"] .language-switcher {
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
 }
+

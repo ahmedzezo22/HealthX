@@ -65,6 +65,47 @@ body.dashboard-route {
   scrollbar-width: none !important;
 }
 
+/* RTL Support for dashboard */
+body.rtl.dashboard-route .dashboard-layout {
+  direction: rtl;
+}
+
+body.ltr.dashboard-route .dashboard-layout {
+  direction: ltr;
+}
+
+/* Ensure no margin-top issues in dashboard content */
+body.dashboard-route .dashboard-main > * {
+  margin-top: 0 !important;
+}
+
+body.dashboard-route .dashboard-main > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* Additional fixes for dashboard components */
+body.dashboard-route .dashboard-main .page-header {
+  display: none !important;
+}
+
+body.dashboard-route .dashboard-main .dashboard-header {
+  display: none !important;
+}
+
+body.dashboard-route .dashboard-main > div:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure proper spacing in dashboard content */
+body.dashboard-route .dashboard-main .analytics-container,
+body.dashboard-route .dashboard-main .about-management,
+body.dashboard-route .dashboard-main .banner-management,
+body.dashboard-route .dashboard-main .dashboard-container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 @layer components {
   .btn-primary {
     @apply bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:from-primary-700 hover:to-primary-800 hover:shadow-lg transform hover:-translate-y-1;

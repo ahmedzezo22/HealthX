@@ -47,11 +47,17 @@ export class DashboardLayoutComponent implements OnInit {
       this.currentLang = lang;
       this.isRTL = lang === 'ar';
       this.updateDocumentDirection();
+      // Reset sidebar state when language changes to prevent layout issues
+      this.isSidebarOpen = true;
     });
   }
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
+    // Force a reflow to ensure proper RTL/LTR positioning
+    setTimeout(() => {
+      this.updateDocumentDirection();
+    }, 10);
   }
 
   setLanguage(lang: string) {
@@ -61,6 +67,15 @@ export class DashboardLayoutComponent implements OnInit {
   updateDocumentDirection() {
     document.documentElement.dir = this.isRTL ? 'rtl' : 'ltr';
     document.documentElement.lang = this.currentLang;
+    
+    // Update body class for additional RTL support
+    if (this.isRTL) {
+      document.body.classList.add('rtl');
+      document.body.classList.remove('ltr');
+    } else {
+      document.body.classList.add('ltr');
+      document.body.classList.remove('rtl');
+    }
   }
 
   goToWebsite() {
