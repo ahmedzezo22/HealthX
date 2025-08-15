@@ -1,0 +1,132 @@
+<div class="participate-management">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.PARTICIPATE' | translate }}</h1>
+    <p>{{ 'DASHBOARD.PARTICIPATE_DESCRIPTION' | translate }}</p>
+  </div>
+
+  <!-- Content Preview -->
+  <div class="content-preview">
+    <h2>{{ 'DASHBOARD.PREVIEW' | translate }}</h2>
+    <div class="preview-content">
+      <div class="participate-header">
+        <h3>{{ participateData.title }}</h3>
+      </div>
+      
+      <div class="steps-timeline">
+        <div class="step-item" *ngFor="let step of participateData.steps; let i = index">
+          <div class="step-number">{{ step.order }}</div>
+          <div class="step-content">
+            <h4>{{ step.title }}</h4>
+            <p>{{ step.description }}</p>
+          </div>
+          <div class="step-status" [class.active]="step.isActive">
+            {{ step.isActive ? ('DASHBOARD.ACTIVE' | translate) : ('DASHBOARD.INACTIVE' | translate) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Management Interface -->
+  <div class="management-interface">
+    <div class="interface-header">
+      <h2>{{ 'DASHBOARD.MANAGE_CONTENT' | translate }}</h2>
+      <div class="interface-actions">
+        <button 
+          *ngIf="!isEditing" 
+          class="btn-edit" 
+          (click)="startEditing()"
+        >
+          {{ 'DASHBOARD.EDIT' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-save" 
+          (click)="saveChanges()"
+        >
+          {{ 'DASHBOARD.SAVE' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-cancel" 
+          (click)="cancelEditing()"
+        >
+          {{ 'DASHBOARD.CANCEL' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="edit-form" *ngIf="isEditing">
+      <!-- Header Section -->
+      <div class="form-section">
+        <h3>{{ 'DASHBOARD.HEADER_SECTION' | translate }}</h3>
+        <div class="form-group">
+          <label>{{ 'DASHBOARD.TITLE' | translate }}</label>
+          <input 
+            type="text" 
+            [(ngModel)]="editedData.title" 
+            class="form-input"
+          />
+        </div>
+      </div>
+
+      <!-- Steps Section -->
+      <div class="form-section">
+        <div class="section-header">
+          <h3>{{ 'DASHBOARD.STEPS_SECTION' | translate }}</h3>
+          <button class="btn-add" (click)="addStep()">
+            <span class="add-icon">+</span>
+            {{ 'DASHBOARD.ADD_STEP' | translate }}
+          </button>
+        </div>
+        
+        <div class="steps-form">
+          <div class="step-form-item" *ngFor="let step of editedData.steps; let i = index">
+            <div class="step-header">
+              <span class="step-number">{{ step.order }}</span>
+              <div class="step-controls">
+                <button class="btn-order" (click)="moveStep(step, 'up')" [disabled]="step.order === 1">
+                  {{ 'DASHBOARD.MOVE_UP' | translate }}
+                </button>
+                <button class="btn-order" (click)="moveStep(step, 'down')" [disabled]="step.order === editedData.steps.length">
+                  {{ 'DASHBOARD.MOVE_DOWN' | translate }}
+                </button>
+                <button class="btn-remove" (click)="removeStep(i)">
+                  <span class="remove-icon">×</span>
+                </button>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.STEP_TITLE' | translate }}</label>
+              <input 
+                type="text" 
+                [(ngModel)]="step.title" 
+                class="form-input"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.STEP_DESCRIPTION' | translate }}</label>
+              <textarea 
+                [(ngModel)]="step.description" 
+                class="form-textarea"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input 
+                  type="checkbox" 
+                  [(ngModel)]="step.isActive"
+                />
+                {{ 'DASHBOARD.ACTIVE' | translate }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

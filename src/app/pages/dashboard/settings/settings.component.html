@@ -13,10 +13,11 @@
           <h3>Email Notifications</h3>
           <p>Receive updates via email</p>
         </div>
+          <!-- (change)="updateSetting('notifications', 'email', $event.target.checked)" -->
         <label class="toggle-switch">
           <input type="checkbox" 
                  [checked]="settings.notifications.email"
-                 (change)="updateSetting('notifications', 'email', $event.target.checked)">
+               >
           <span class="slider"></span>
         </label>
       </div>
@@ -26,10 +27,11 @@
           <h3>Push Notifications</h3>
           <p>Receive browser push notifications</p>
         </div>
+        <!-- (change)="updateSetting('notifications', 'push', $event.target?.checked)" -->
         <label class="toggle-switch">
           <input type="checkbox" 
                  [checked]="settings.notifications.push"
-                 (change)="updateSetting('notifications', 'push', $event.target.checked)">
+                 >
           <span class="slider"></span>
         </label>
       </div>
@@ -39,10 +41,11 @@
           <h3>SMS Notifications</h3>
           <p>Receive updates via SMS</p>
         </div>
+        <!-- (change)="updateSetting('notifications', 'sms', $event.target?.checked)" -->
         <label class="toggle-switch">
           <input type="checkbox" 
                  [checked]="settings.notifications.sms"
-                 (change)="updateSetting('notifications', 'sms', $event.target.checked)">
+                 >
           <span class="slider"></span>
         </label>
       </div>
@@ -56,9 +59,10 @@
           <h3>Profile Visibility</h3>
           <p>Control who can see your profile</p>
         </div>
+        <!-- (change)="updateSetting('privacy', 'profileVisibility', $event.target?.value)" -->
         <select class="setting-select" 
                 [value]="settings.privacy.profileVisibility"
-                (change)="updateSetting('privacy', 'profileVisibility', $event.target.value)">
+                >
           <option value="public">Public</option>
           <option value="private">Private</option>
           <option value="friends">Friends Only</option>
@@ -70,10 +74,11 @@
           <h3>Data Sharing</h3>
           <p>Allow data sharing with partners</p>
         </div>
+         <!-- (change)="updateSetting('privacy', 'dataSharing', $event.target?.checked)" -->
         <label class="toggle-switch">
           <input type="checkbox" 
                  [checked]="settings.privacy.dataSharing"
-                 (change)="updateSetting('privacy', 'dataSharing', $event.target.checked)">
+                >
           <span class="slider"></span>
         </label>
       </div>
@@ -83,10 +88,11 @@
           <h3>Analytics Collection</h3>
           <p>Help improve the platform</p>
         </div>
+          <!-- (change)="updateSetting('privacy', 'analytics', $event.target.checked)" -->
         <label class="toggle-switch">
           <input type="checkbox" 
                  [checked]="settings.privacy.analytics"
-                 (change)="updateSetting('privacy', 'analytics', $event.target.checked)">
+               >
           <span class="slider"></span>
         </label>
       </div>
@@ -100,9 +106,10 @@
           <h3>Language</h3>
           <p>Choose your preferred language</p>
         </div>
+        <!-- (change)="updateSetting('preferences', 'language', $event.target?.value)" -->
         <select class="setting-select" 
                 [value]="settings.preferences.language"
-                (change)="updateSetting('preferences', 'language', $event.target.value)">
+                >
           <option value="en">English</option>
           <option value="ar">العربية</option>
         </select>
@@ -113,9 +120,10 @@
           <h3>Theme</h3>
           <p>Choose your preferred theme</p>
         </div>
+         <!-- (change)="updateSetting('preferences', 'theme', $event.target?.value)" -->
         <select class="setting-select" 
                 [value]="settings.preferences.theme"
-                (change)="updateSetting('preferences', 'theme', $event.target.value)">
+               >
           <option value="light">Light</option>
           <option value="dark">Dark</option>
           <option value="auto">Auto</option>
@@ -129,7 +137,7 @@
         </div>
         <select class="setting-select" 
                 [value]="settings.preferences.timezone"
-                (change)="updateSetting('preferences', 'timezone', $event.target.value)">
+                >
           <option value="UTC+3">UTC+3 (Riyadh)</option>
           <option value="UTC+0">UTC+0 (London)</option>
           <option value="UTC-5">UTC-5 (New York)</option>

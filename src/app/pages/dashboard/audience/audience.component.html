@@ -1,0 +1,142 @@
+<div class="audience-management">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.AUDIENCE' | translate }}</h1>
+    <p>{{ 'DASHBOARD.AUDIENCE_DESCRIPTION' | translate }}</p>
+  </div>
+
+  <!-- Content Preview -->
+  <div class="content-preview">
+    <h2>{{ 'DASHBOARD.PREVIEW' | translate }}</h2>
+    <div class="preview-content">
+      <div class="audience-header">
+        <h3>{{ audienceData.title }}</h3>
+        <p>{{ audienceData.description }}</p>
+      </div>
+      
+      <div class="audience-cards">
+        <div class="audience-card" *ngFor="let card of audienceData.cards; let i = index">
+          <div class="card-icon">{{ card.icon }}</div>
+          <div class="card-content">
+            <h4>{{ card.title }}</h4>
+            <p>{{ card.description }}</p>
+          </div>
+          <div class="card-status" [class.active]="card.isActive">
+            {{ card.isActive ? ('DASHBOARD.ACTIVE' | translate) : ('DASHBOARD.INACTIVE' | translate) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Management Interface -->
+  <div class="management-interface">
+    <div class="interface-header">
+      <h2>{{ 'DASHBOARD.MANAGE_CONTENT' | translate }}</h2>
+      <div class="interface-actions">
+        <button 
+          *ngIf="!isEditing" 
+          class="btn-edit" 
+          (click)="startEditing()"
+        >
+          {{ 'DASHBOARD.EDIT' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-save" 
+          (click)="saveChanges()"
+        >
+          {{ 'DASHBOARD.SAVE' | translate }}
+        </button>
+        <button 
+          *ngIf="isEditing" 
+          class="btn-cancel" 
+          (click)="cancelEditing()"
+        >
+          {{ 'DASHBOARD.CANCEL' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="edit-form" *ngIf="isEditing">
+      <!-- Header Section -->
+      <div class="form-section">
+        <h3>{{ 'DASHBOARD.HEADER_SECTION' | translate }}</h3>
+        <div class="form-group">
+          <label>{{ 'DASHBOARD.TITLE' | translate }}</label>
+          <input 
+            type="text" 
+            [(ngModel)]="editedData.title" 
+            class="form-input"
+          />
+        </div>
+        <div class="form-group">
+          <label>{{ 'DASHBOARD.DESCRIPTION' | translate }}</label>
+          <textarea 
+            [(ngModel)]="editedData.description" 
+            class="form-textarea"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Cards Section -->
+      <div class="form-section">
+        <div class="section-header">
+          <h3>{{ 'DASHBOARD.CARDS_SECTION' | translate }}</h3>
+          <button class="btn-add" (click)="addCard()">
+            <span class="add-icon">+</span>
+            {{ 'DASHBOARD.ADD_CARD' | translate }}
+          </button>
+        </div>
+        
+        <div class="cards-form">
+          <div class="card-form-item" *ngFor="let card of editedData.cards; let i = index">
+            <div class="card-header">
+              <span class="card-number">{{ i + 1 }}</span>
+              <button class="btn-remove" (click)="removeCard(i)">
+                <span class="remove-icon">×</span>
+              </button>
+            </div>
+            
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.CARD_ICON' | translate }}</label>
+              <input 
+                type="text" 
+                [(ngModel)]="card.icon" 
+                class="form-input"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.CARD_TITLE' | translate }}</label>
+              <input 
+                type="text" 
+                [(ngModel)]="card.title" 
+                class="form-input"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label>{{ 'DASHBOARD.CARD_DESCRIPTION' | translate }}</label>
+              <textarea 
+                [(ngModel)]="card.description" 
+                class="form-textarea"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input 
+                  type="checkbox" 
+                  [(ngModel)]="card.isActive"
+                />
+                {{ 'DASHBOARD.ACTIVE' | translate }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,18 +12,18 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { LoginComponent } from './auth/login.component';
 import { RegisterComponent } from './auth/register.component';
-import { DashboardLayoutComponent } from './pages/dashboard/dashboard-layout.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ParticipantsComponent } from './pages/dashboard/participants.component';
-import { ProjectsComponent } from './pages/dashboard/projects.component';
-import { AnalyticsComponent } from './pages/dashboard/analytics.component';
-import { SettingsComponent } from './pages/dashboard/settings.component';
-import { ChallengesComponent } from './pages/dashboard/challenges.component';
-import { BannerComponent } from './pages/dashboard/banner.component';
-import { AboutComponent as AboutManagementComponent } from './pages/dashboard/about.component';
-import { VisionComponent } from './pages/dashboard/vision.component';
-import { TracksComponent as TracksManagementComponent } from './pages/dashboard/tracks.component';
-import { FAQComponent as FAQManagementComponent } from './pages/dashboard/faq.component';
+import { DashboardLayoutComponent } from './pages/dashboard/dashboardLayout/dashboard-layout.component';
+import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.component';
+import { ParticipantsComponent } from './pages/dashboard/participants/participants.component';
+import { ProjectsComponent } from './pages/dashboard/projects/projects.component';
+import { ChallengesComponent } from './pages/dashboard/challenges/challenges.component';
+import { AnalyticsComponent } from './pages/dashboard/analytics/analytics.component';
+import { SettingsComponent } from './pages/dashboard/settings/settings.component';
+import { BannerComponent } from './pages/dashboard/banner/banner.component';
+import { VisionComponent } from './pages/dashboard/vision/vision.component';
+import { TracksComponent as TracksManagementComponent } from './pages/dashboard/tracks/tracks.component';
+import { FAQComponent } from './pages/dashboard/faq/faq.component';
+import { AboutManagmentComponent } from './pages/dashboard/about/about.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -44,10 +44,10 @@ export const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'banner', component: BannerComponent },
-      { path: 'about', component: AboutManagementComponent },
+      { path: 'about', component: AboutManagmentComponent },
       { path: 'vision', component: VisionComponent },
       { path: 'tracks', component: TracksManagementComponent },
-      { path: 'faq', component: FAQManagementComponent },
+      { path: 'faq', component: FAQComponent },
       { path: 'participants', component: ParticipantsComponent },
       { path: 'projects', component: ProjectsComponent },
       { path: 'challenges', component: ChallengesComponent },

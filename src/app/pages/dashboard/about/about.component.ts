@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TranslatePipe } from '../../pipes/translate.pipe';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-about',
@@ -10,7 +10,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent {
+export class AboutManagmentComponent {
   aboutData = {
     overviewTitle: 'Overview',
     overviewDesc: 'The Health Research Conference project aims to enhance scientific research culture in the health sector by providing a scientific platform that brings together researchers and experts to discuss the latest developments.',

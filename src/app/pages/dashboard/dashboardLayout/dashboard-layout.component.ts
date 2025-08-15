@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-import { TranslatePipe } from '../../pipes/translate.pipe';
-import { TranslationService } from '../../services/translation.service';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
+import { TranslationService } from '../../../services/translation.service';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -43,7 +43,7 @@ export class DashboardLayoutComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.translationService.currentLang$.subscribe(lang => {
+    this.translationService.currentLang$.subscribe((lang:any) => {
       this.currentLang = lang;
       this.isRTL = lang === 'ar';
       this.updateDocumentDirection();
