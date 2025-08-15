@@ -14,6 +14,57 @@ body {
   line-height: 1.6;
 }
 
+/* Dashboard route specific styling */
+body.dashboard-route {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Ensure dashboard is completely isolated */
+body.dashboard-route .dashboard-layout {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  overflow: hidden !important;
+}
+
+/* Hide any global elements when in dashboard */
+body.dashboard-route app-header,
+body.dashboard-route app-footer {
+  display: none !important;
+}
+
+/* Additional dashboard isolation rules */
+body.dashboard-route {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.dashboard-route .dashboard-layout {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  overflow: hidden !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+/* Prevent any global scrollbars in dashboard */
+body.dashboard-route::-webkit-scrollbar {
+  display: none !important;
+}
+
+body.dashboard-route {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
 @layer components {
   .btn-primary {
     @apply bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:from-primary-700 hover:to-primary-800 hover:shadow-lg transform hover:-translate-y-1;
