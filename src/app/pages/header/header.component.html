@@ -18,28 +18,22 @@
         <a (click)="scrollToSection('participate')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.PARTICIPATE' | translate }}</a>
         <a (click)="scrollToSection('registration')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.REGISTER' | translate }}</a>
         <a (click)="scrollToSection('contact')" [class]="isScrolled ? 'nav-link scrolled' : 'nav-link'">{{ 'HEADER.CONTACT' | translate }}</a>
-        <a routerLink="/dashboard" [class]="isScrolled ? 'nav-link scrolled dashboard-link' : 'nav-link dashboard-link'">
+        <!-- <a routerLink="/dashboard" [class]="isScrolled ? 'nav-link scrolled dashboard-link' : 'nav-link dashboard-link'">
           <span class="dashboard-icon">📊</span>
           {{ 'HEADER.DASHBOARD' | translate }}
-        </a>
+        </a> -->
       </div>
 
       <!-- Language Toggle -->
       <div class="language-toggle">
-        <button 
-          (click)="setLanguage('ar')" 
-          [class]="currentLang === 'ar' ? 'lang-btn active' : 'lang-btn'"
-          class="lang-btn"
-        >
-          {{ 'LANGUAGE.AR' | translate }}
-        </button>
-        <button 
-          (click)="setLanguage('en')" 
-          [class]="currentLang === 'en' ? 'lang-btn active' : 'lang-btn'"
-          class="lang-btn"
-        >
-          {{ 'LANGUAGE.EN' | translate }}
-        </button>
+              <button
+        (click)="toggleLanguage()"
+        class="lang-toggle-btn"
+        [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'"
+      >
+        <span class="lang-text">{{ currentLang === 'ar' ? 'English' : 'العربية' }}</span>
+        <span class="lang-icon">{{ currentLang === 'ar' ? '🇺🇸' : '🇸🇦' }}</span>
+      </button>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -60,18 +54,16 @@
       <a (click)="scrollToSection('participate')">{{ 'HEADER.PARTICIPATE' | translate }}</a>
       <a (click)="scrollToSection('registration')">{{ 'HEADER.REGISTER' | translate }}</a>
       <a (click)="scrollToSection('contact')">{{ 'HEADER.CONTACT' | translate }}</a>
-      <a routerLink="/dashboard" class="mobile-dashboard-link">
+      <!-- <a routerLink="/dashboard" class="mobile-dashboard-link">
         <span class="dashboard-icon">📊</span>
         {{ 'HEADER.DASHBOARD' | translate }}
-      </a>
+      </a> -->
       
       <!-- Mobile Language Toggle -->
       <div class="mobile-language-toggle">
-        <button (click)="setLanguage('ar')" [class]="currentLang === 'ar' ? 'lang-btn active' : 'lang-btn'" class="lang-btn">
-          {{ 'LANGUAGE.AR' | translate }}
-        </button>
-        <button (click)="setLanguage('en')" [class]="currentLang === 'en' ? 'lang-btn active' : 'lang-btn'" class="lang-btn">
-          {{ 'LANGUAGE.EN' | translate }}
+        <button (click)="toggleLanguage()" class="lang-toggle-btn mobile">
+          <span class="lang-text">{{ currentLang === 'ar' ? 'العربية' : 'English' }}</span>
+          <span class="lang-icon">{{ currentLang === 'ar' ? '🇸🇦' : '🇺🇸' }}</span>
         </button>
       </div>
     </div>

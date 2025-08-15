@@ -14,18 +14,12 @@
       <!-- Language Switcher -->
       <div class="language-switcher">
         <button 
-          class="lang-btn" 
-          [class.active]="currentLang === 'ar'"
-          (click)="setLanguage('ar')"
+          class="lang-toggle-btn" 
+          (click)="toggleLanguage()"
+          [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'"
         >
-          العربية
-        </button>
-        <button 
-          class="lang-btn" 
-          [class.active]="currentLang === 'en'"
-          (click)="setLanguage('en')"
-        >
-          English
+          <span class="lang-text">{{ currentLang === 'ar' ? 'English' : 'العربية' }}</span>
+          <span class="lang-icon">{{ currentLang === 'ar' ? '🇺🇸' : '🇸🇦' }}</span>
         </button>
       </div>
       

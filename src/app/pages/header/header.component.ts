@@ -45,4 +45,9 @@ export class HeaderComponent implements OnInit {
   setLanguage(lang: string) {
     this.translationService.setLanguage(lang);
   }
+
+  toggleLanguage() {
+    const newLang = this.currentLang === 'ar' ? 'en' : 'ar';
+    this.translationService.setLanguage(newLang);
+  }
 }
