@@ -507,6 +507,7 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .countdown-box {
@@ -517,6 +518,9 @@
   text-align: center;
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(8px);
+  flex: 1;
+  min-width: 60px;
+  max-width: 80px;
 }
 
 .countdown-value {
@@ -593,3 +597,127 @@
 .hero-container{display:flex;align-items:center;justify-content:center;height:100%}
 .hero-content{text-align:center;color:#fff}
 .project-title{letter-spacing:2px;text-transform:uppercase}
+
+/* Mobile Responsive Countdown */
+@media (max-width: 768px) {
+  .countdown-container {
+    margin: 20px 0 16px 0;
+  }
+  
+  .countdown-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .countdown-timer {
+    gap: 4px;
+    padding: 0 10px;
+  }
+  
+  .countdown-box {
+    padding: 8px 12px;
+    min-width: 50px;
+    max-width: 60px;
+  }
+  
+  .countdown-value {
+    font-size: 20px;
+    margin-bottom: 2px;
+  }
+  
+  .countdown-label {
+    font-size: 11px;
+  }
+  
+  .countdown-separator {
+    font-size: 18px;
+    margin-top: -10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-container {
+    margin: 16px 0 12px 0;
+  }
+  
+  .countdown-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .countdown-timer {
+    gap: 2px;
+    padding: 0 5px;
+  }
+  
+  .countdown-box {
+    padding: 6px 8px;
+    min-width: 45px;
+    max-width: 55px;
+  }
+  
+  .countdown-value {
+    font-size: 18px;
+    margin-bottom: 1px;
+  }
+  
+  .countdown-label {
+    font-size: 10px;
+  }
+  
+  .countdown-separator {
+    font-size: 16px;
+    margin-top: -8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .countdown-timer {
+    gap: 1px;
+    padding: 0 2px;
+  }
+  
+  .countdown-box {
+    padding: 4px 6px;
+    min-width: 40px;
+    max-width: 50px;
+  }
+  
+  .countdown-value {
+    font-size: 16px;
+  }
+  
+  .countdown-label {
+    font-size: 9px;
+  }
+  
+  .countdown-separator {
+    font-size: 14px;
+    margin-top: -6px;
+  }
+}
+
+/* Ensure countdown works in landscape mode on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .countdown-container {
+    margin: 15px 0 10px 0;
+  }
+  
+  .countdown-timer {
+    gap: 6px;
+  }
+  
+  .countdown-box {
+    padding: 10px 14px;
+    min-width: 55px;
+    max-width: 65px;
+  }
+  
+  .countdown-value {
+    font-size: 22px;
+  }
+  
+  .countdown-label {
+    font-size: 12px;
+  }
+}

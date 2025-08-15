@@ -5,27 +5,39 @@
       <div class="overlay"></div>
       <div class="hero-container" data-reveal="fade-up">
         <div class="hero-content">
-          <div class="brochure-header">
-            <img class="brand-logo" src="assets/logo.png" alt="Inceptia" />
-            <div class="brand-tagline">{{ 'HERO.BRAND_TAGLINE' | translate }}</div>
+          <div class="brochure-header animate-on-scroll">
+            <img class="brand-logo image-hover" src="assets/logo.png" alt="Inceptia" />
+            <div class="brand-tagline hero-subtitle">{{ 'HERO.BRAND_TAGLINE' | translate }}</div>
           </div>
-          <h1 class="project-title">{{ 'HERO.PROJECT_TITLE' | translate }}</h1>
-          <div class="project-date">{{ 'HERO.PROJECT_DATE' | translate }}</div>
-          <div class="countdown-container" data-reveal>
+          <h1 class="project-title hero-title">{{ 'HERO.PROJECT_TITLE' | translate }}</h1>
+          <div class="project-date hero-subtitle">{{ 'HERO.PROJECT_DATE' | translate }}</div>
+          <div class="countdown-container animate-on-scroll" data-reveal>
             <div class="countdown-title">{{ 'HERO.COUNTDOWN_TITLE' | translate }}</div>
             <div class="countdown-timer">
-              <div class="countdown-box"><div class="countdown-value">{{ secondsRemaining }}</div><div class="countdown-label">{{ 'HERO.SECONDS' | translate }}</div></div>
+              <div class="countdown-box animate-bounce-in">
+                <div class="countdown-value">{{ daysRemaining }}</div>
+                <div class="countdown-label">{{ 'HERO.DAYS' | translate }}</div>
+              </div>
               <div class="countdown-separator">:</div>
-              <div class="countdown-box"><div class="countdown-value">{{ minutesRemaining }}</div><div class="countdown-label">{{ 'HERO.MINUTES' | translate }}</div></div>
+              <div class="countdown-box animate-bounce-in">
+                <div class="countdown-value">{{ hoursRemaining }}</div>
+                <div class="countdown-label">{{ 'HERO.HOURS' | translate }}</div>
+              </div>
               <div class="countdown-separator">:</div>
-              <div class="countdown-box"><div class="countdown-value">{{ hoursRemaining }}</div><div class="countdown-label">{{ 'HERO.HOURS' | translate }}</div></div>
+              <div class="countdown-box animate-bounce-in">
+                <div class="countdown-value">{{ minutesRemaining }}</div>
+                <div class="countdown-label">{{ 'HERO.MINUTES' | translate }}</div>
+              </div>
               <div class="countdown-separator">:</div>
-              <div class="countdown-box"><div class="countdown-value">{{ daysRemaining }}</div><div class="countdown-label">{{ 'HERO.DAYS' | translate }}</div></div>
+              <div class="countdown-box animate-bounce-in">
+                <div class="countdown-value">{{ secondsRemaining }}</div>
+                <div class="countdown-label">{{ 'HERO.SECONDS' | translate }}</div>
+              </div>
             </div>
           </div>
-          <!-- <div class="hero-buttons stagger" data-reveal="fade-up">
-            <button (click)="scrollToRegistration()" class="btn-primary glow-on-hover"><span class="btn-text">{{ 'HERO.REGISTER_NOW' | translate }}</span></button>
-            <button class="btn-secondary glow-on-hover" (click)="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')"><span class="btn-text">{{ 'HERO.WATCH_TRAILER' | translate }}</span></button>
+          <!-- <div class="hero-buttons stagger animate-on-scroll" data-reveal="fade-up">
+            <button (click)="scrollToRegistration()" class="btn-primary glow-on-hover hover-lift hover-glow"><span class="btn-text">{{ 'HERO.REGISTER_NOW' | translate }}</span></button>
+            <button class="btn-secondary glow-on-hover hover-lift hover-glow" (click)="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')"><span class="btn-text">{{ 'HERO.WATCH_TRAILER' | translate }}</span></button>
           </div> -->
         </div>
       </div>
@@ -39,8 +51,8 @@
       <div class="overlay"></div>
       <div class="hero-container">
         <div class="hero-content">
-          <h1 class="project-title">{{ 'HERO.SLIDE2_TITLE' | translate }}</h1>
-          <div class="project-date">{{ 'HERO.SLIDE2_SUBTITLE' | translate }}</div>
+          <h1 class="project-title hero-title">{{ 'HERO.SLIDE2_TITLE' | translate }}</h1>
+          <div class="project-date hero-subtitle">{{ 'HERO.SLIDE2_SUBTITLE' | translate }}</div>
          
         </div>
       </div>
@@ -51,19 +63,19 @@
       <div class="overlay"></div>
       <div class="hero-container">
         <div class="hero-content">
-          <h1 class="project-title">{{ 'HERO.SLIDE3_TITLE' | translate }}</h1>
-          <div class="project-date">{{ 'HERO.SLIDE3_SUBTITLE' | translate }}</div>
+          <h1 class="project-title hero-title">{{ 'HERO.SLIDE3_TITLE' | translate }}</h1>
+          <div class="project-date hero-subtitle">{{ 'HERO.SLIDE3_SUBTITLE' | translate }}</div>
         </div>
       </div>
     </div>
 
     <!-- Slider controls -->
-    <button class="nav prev" (click)="prevSlide()">‹</button>
-    <button class="nav next" (click)="nextSlide()">›</button>
+    <button class="nav prev hover-scale" (click)="prevSlide()">‹</button>
+    <button class="nav next hover-scale" (click)="nextSlide()">›</button>
     <div class="dots">
-      <button class="dot active" (click)="goTo(0)"></button>
-      <button class="dot" (click)="goTo(1)"></button>
-      <button class="dot" (click)="goTo(2)"></button>
+      <button class="dot active hover-scale" (click)="goTo(0)"></button>
+      <button class="dot hover-scale" (click)="goTo(1)"></button>
+      <button class="dot hover-scale" (click)="goTo(2)"></button>
     </div>
   </div>
 </section>
