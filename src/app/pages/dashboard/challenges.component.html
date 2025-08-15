@@ -1,0 +1,52 @@
+<div class="challenges-container">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.CHALLENGES' | translate }}</h1>
+    <p>Manage and monitor hackathon challenges</p>
+  </div>
+
+  <div class="challenges-content">
+    <div class="challenges-grid">
+      <div *ngFor="let challenge of challenges" class="challenge-card">
+        <div class="challenge-header">
+          <h3>{{ challenge.title }}</h3>
+          <span class="challenge-id">#{{ challenge.id }}</span>
+        </div>
+        
+        <p class="challenge-description">{{ challenge.description }}</p>
+        
+        <div class="challenge-details">
+          <div class="detail-item">
+            <span class="label">Track:</span>
+            <span class="value">{{ challenge.track }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Prize:</span>
+            <span class="value prize">${{ challenge.prize.toLocaleString() }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Participants:</span>
+            <span class="value">{{ challenge.participants }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Deadline:</span>
+            <span class="value deadline" [class.urgent]="getDaysRemaining(challenge.deadline) <= 7">
+              {{ challenge.deadline }} ({{ getDaysRemaining(challenge.deadline) }} days left)
+            </span>
+          </div>
+        </div>
+        
+        <div class="challenge-status">
+          <span class="status-badge" [class]="getStatusClass(challenge.status)">
+            {{ challenge.status === 'active' ? 'Active' : 'Completed' }}
+          </span>
+        </div>
+        
+        <div class="challenge-actions">
+          <button class="btn-view">👁️ View Details</button>
+          <button class="btn-edit">✏️ Edit</button>
+          <button class="btn-delete">🗑️ Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

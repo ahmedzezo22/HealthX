@@ -1,0 +1,106 @@
+<div class="tracks-management">
+  <div class="page-header">
+    <h1>{{ 'DASHBOARD.TRACKS_MANAGEMENT' | translate }}</h1>
+    <p>{{ 'DASHBOARD.TRACKS_DESCRIPTION' | translate }}</p>
+  </div>
+
+  <!-- Management Actions -->
+  <div class="management-actions">
+    <button class="btn-add" (click)="startAdding()" *ngIf="!isAdding">
+      <span class="add-icon">+</span>
+      {{ 'DASHBOARD.ADD_NEW' | translate }}
+    </button>
+  </div>
+
+  <!-- Add New Track Form -->
+  <div class="add-form" *ngIf="isAdding">
+    <h3>{{ 'DASHBOARD.ADD_NEW' | translate }}</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.TITLE' | translate }}</label>
+        <input type="text" [(ngModel)]="newTrack.title" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.DESCRIPTION' | translate }}</label>
+        <textarea [(ngModel)]="newTrack.description" class="form-textarea" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.ICON' | translate }}</label>
+        <input type="text" [(ngModel)]="newTrack.icon" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.MAX_PARTICIPANTS' | translate }}</label>
+        <input type="number" [(ngModel)]="newTrack.maxParticipants" class="form-input" />
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" (click)="saveTrack()">{{ 'DASHBOARD.SAVE' | translate }}</button>
+      <button class="btn-cancel" (click)="cancelAction()">{{ 'DASHBOARD.CANCEL' | translate }}</button>
+    </div>
+  </div>
+
+  <!-- Edit Track Form -->
+  <div class="edit-form" *ngIf="isEditing && editingTrack">
+    <h3>{{ 'DASHBOARD.EDIT' | translate }}</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.TITLE' | translate }}</label>
+        <input type="text" [(ngModel)]="editingTrack.title" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.DESCRIPTION' | translate }}</label>
+        <textarea [(ngModel)]="editingTrack.description" class="form-textarea" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.ICON' | translate }}</label>
+        <input type="text" [(ngModel)]="editingTrack.icon" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label>{{ 'DASHBOARD.MAX_PARTICIPANTS' | translate }}</label>
+        <input type="number" [(ngModel)]="editingTrack.maxParticipants" class="form-input" />
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" (click)="updateTrack()">{{ 'DASHBOARD.SAVE' | translate }}</button>
+      <button class="btn-cancel" (click)="cancelAction()">{{ 'DASHBOARD.CANCEL' | translate }}</button>
+    </div>
+  </div>
+
+  <!-- Tracks Table -->
+  <div class="tracks-table">
+    <table>
+      <thead>
+        <tr>
+          <th>{{ 'DASHBOARD.ICON' | translate }}</th>
+          <th>{{ 'DASHBOARD.TITLE' | translate }}</th>
+          <th>{{ 'DASHBOARD.DESCRIPTION' | translate }}</th>
+          <th>{{ 'DASHBOARD.STATUS' | translate }}</th>
+          <th>{{ 'DASHBOARD.PARTICIPANTS' | translate }}</th>
+          <th>{{ 'DASHBOARD.MAX_PARTICIPANTS' | translate }}</th>
+          <th>{{ 'DASHBOARD.ACTIONS' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let track of tracks">
+          <td class="track-icon">{{ track.icon }}</td>
+          <td class="track-title">{{ track.title }}</td>
+          <td class="track-description">{{ track.description }}</td>
+          <td>
+            <span class="status-badge" [class.active]="track.isActive" [class.inactive]="!track.isActive">
+              {{ track.isActive ? ('DASHBOARD.ACTIVE' | translate) : ('DASHBOARD.INACTIVE' | translate) }}
+            </span>
+          </td>
+          <td class="track-participants">{{ track.participants }}</td>
+          <td class="track-max">{{ track.maxParticipants }}</td>
+          <td class="track-actions">
+            <button class="btn-edit" (click)="startEditing(track)">{{ 'DASHBOARD.EDIT' | translate }}</button>
+            <button class="btn-toggle" (click)="toggleTrackStatus(track)">
+              {{ 'DASHBOARD.TOGGLE_STATUS' | translate }}
+            </button>
+            <button class="btn-delete" (click)="deleteTrack(track.id)">{{ 'DASHBOARD.DELETE' | translate }}</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -5,9 +5,12 @@ import { appConfig } from './app/app.config';
 import { TranslationService } from './app/services/translation.service';
 import { provideHttpClient } from '@angular/common/http';
 import { APP_INITIALIZER } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app-routing.module';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideRouter(routes),
     provideHttpClient(),
     {
       provide: APP_INITIALIZER,
