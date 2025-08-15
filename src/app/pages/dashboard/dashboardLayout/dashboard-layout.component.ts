@@ -64,6 +64,11 @@ export class DashboardLayoutComponent implements OnInit {
     this.translationService.setLanguage(lang);
   }
 
+  toggleLanguage() {
+    const newLang = this.currentLang === 'ar' ? 'en' : 'ar';
+    this.translationService.setLanguage(newLang);
+  }
+
   updateDocumentDirection() {
     document.documentElement.dir = this.isRTL ? 'rtl' : 'ltr';
     document.documentElement.lang = this.currentLang;
