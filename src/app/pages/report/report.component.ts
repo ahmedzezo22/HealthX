@@ -50,6 +50,8 @@ export class ReportComponent {
 
   async downloadPdf() {
     if (!this.pdfAreaRef) return;
+    // Ensure inputs are in-view and images loaded before rendering
+    await new Promise((r) => setTimeout(r, 50));
     await this.pdf.downloadFromElement(this.pdfAreaRef.nativeElement, {
       fileName: 'occurrence-report.pdf',
       scale: 2

@@ -58,12 +58,33 @@ export class PdfService {
   async downloadFromElement(element: HTMLElement, options: PdfOptions = {}): Promise<void> {
     const fileName = options.fileName || 'document.pdf';
     const blob = await this.generateBlobFromElement(element, options);
+
+    // IE/Edge legacy
+    const navAny = window.navigator as any;
+    if (navAny && typeof navAny.msSaveOrOpenBlob === 'function') {
+      navAny.msSaveOrOpenBlob(blob, fileName);
+      return;
+    }
+
     const blobUrl = URL.createObjectURL(blob);
 
+    // Safari/iOS fallback: open in a new tab instead of forced download
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && (navigator as any).maxTouchPoints > 1);
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isIOS || isSafari) {
+      window.open(blobUrl, '_blank');
+      // Do not revoke immediately to allow the viewer to load
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+      return;
+    }
+
+    // Standard download
     const link = document.createElement('a');
     link.href = blobUrl;
     link.download = fileName;
+    document.body.appendChild(link);
     link.click();
+    link.remove();
     URL.revokeObjectURL(blobUrl);
   }
 }
