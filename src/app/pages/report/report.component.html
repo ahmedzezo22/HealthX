@@ -1,0 +1,266 @@
+<div class="container">
+  <h2>Occurrence / Variance Report (Preview)</h2>
+
+  <div class="actions">
+    <input type="email" placeholder="Recipient email" [(ngModel)]="emailTo" />
+    <button class="btn primary" (click)="downloadPdf()">Download PDF</button>
+    <button class="btn" (click)="sendEmail()">Send Email (stub)</button>
+  </div>
+
+  <!-- PDF A4 styled preview: users TYPE DIRECTLY INSIDE this sheet -->
+  <div #pdfArea class="pdf-a4">
+    <!-- Top Header -->
+    <div class="sheet-header">
+      <div class="header-left">
+        <img class="logo" src="assets/logo.png" alt="Logo" />
+        <div class="org">
+          <div class="org-line en">KINGDOM OF SAUDI ARABIA</div>
+          <div class="org-line en">HAIL HEALTH CLUSTER</div>
+          <div class="org-line en">QUALITY & PATIENT SAFETY DEPARTMENT</div>
+          <div class="org-note">(Not part of the Medical Record)</div>
+          <div class="org-note red">(Not for duplication – For Quality improvement purposes only)</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="title">OCCURRENCE / VARIANCE REPORT</div>
+        <div class="subtitle">(Not for Retributive Purposes)</div>
+      </div>
+    </div>
+
+    <!-- Patient and incident top strip -->
+    <div class="info-grid">
+      <div><b>Name</b>: <span class="field" contenteditable="true"></span></div>
+      <div><b>MRN</b>: <span class="field" contenteditable="true"></span></div>
+      <div><b>D.O.B</b>: <span class="field" contenteditable="true"></span></div>
+      <div><b>Nationality</b>: <span class="field" contenteditable="true"></span></div>
+      <div><b>Clinic</b>: <span class="field" contenteditable="true"></span></div>
+      <div><b>Doctor</b>: <span class="field" contenteditable="true"></span></div>
+      <div class="full">
+        <b>Status</b>:
+        <label class="check"><input type="radio" name="status"> In-patient</label>
+        <label class="check"><input type="radio" name="status"> Outpatient</label>
+        <label class="check"><input type="radio" name="status"> Emergency patient</label>
+      </div>
+    </div>
+
+    <div class="band band-grey">
+      <div><b>Date of Incident</b>: <span class="field" contenteditable="true"></span></div>
+      <div><b>Time of Incident</b>: <span class="field" contenteditable="true"></span></div>
+      <div><b>Incident Location</b>: <span class="field" contenteditable="true"></span></div>
+      <div><b>Reporting Department/Area</b>: <span class="field" contenteditable="true"></span></div>
+    </div>
+
+    <div class="band band-outline">
+      <div><b>Involved Person</b>:
+        <label class="check"><input type="checkbox"> Patient</label>
+        <label class="check"><input type="checkbox"> Staff</label>
+        <label class="check"><input type="checkbox"> Other</label>
+        <span class="muted">If yes, please specify:</span> <span class="field" contenteditable="true"></span>
+      </div>
+      <div><b>Sentinel Event</b>:
+        <label class="check"><input type="radio" name="sentinel"> Yes</label>
+        <label class="check"><input type="radio" name="sentinel"> No</label>
+        <span class="muted">If yes, please specify:</span> <span class="field" contenteditable="true"></span>
+      </div>
+      <div><b>Near Miss</b>:
+        <label class="check"><input type="radio" name="nearmiss"> Yes</label>
+        <label class="check"><input type="radio" name="nearmiss"> No</label>
+      </div>
+      <div><b>Medication Error</b>:
+        <label class="check"><input type="radio" name="mederr"> Yes</label>
+        <label class="check"><input type="radio" name="mederr"> No</label>
+      </div>
+    </div>
+
+    <!-- Sections grid (colors and headings like the form) -->
+    <div class="cards-grid cols-4">
+      <div class="card">
+        <div class="card-head">DEGREE OF HARM</div>
+        <ul class="card-body">
+          <li>No harm</li>
+          <li>Minor injury</li>
+          <li>Severe injury</li>
+          <li>Permanent loss of function or disability</li>
+          <li>Death</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">VTE (VENOUS THROMBOEMBOLISM) RISK ASSESSMENT</div>
+        <ul class="card-body">
+          <li>Failure to perform VTE risk assessment on admission</li>
+          <li>Failure to provide VTE prophylaxis</li>
+          <li>Other: <span class="field sm" contenteditable="true"></span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">MEDICATION</div>
+        <ul class="card-body">
+          <li>Medication prescribing error</li>
+          <li>Medication dispensing error</li>
+          <li>Medication administration error</li>
+          <li>Adverse drug reaction</li>
+          <li>Wrong patient/dose/route/time</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">CLINICAL PRACTICE / PROCEDURE</div>
+        <ul class="card-body">
+          <li>Consent</li>
+          <li>Patient Privacy</li>
+          <li>Reporting of test results</li>
+          <li>Policy not available</li>
+          <li>Incorrect or inconsistent risk assessment</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cards-grid cols-3">
+      <div class="card">
+        <div class="card-head">STAFFING</div>
+        <ul class="card-body">
+          <li>Inadequate nurse-to-patient ratios</li>
+          <li>Burnout and fatigue</li>
+          <li>Multitasking under pressure</li>
+          <li>Skipping safety checks</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">RESTRAINT AND SECLUSION PRACTICES</div>
+        <ul class="card-body">
+          <li>Lack of documentation or monitoring</li>
+          <li>Failure to obtain a doctor's order</li>
+          <li>Not following hospital policy</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">COMMUNICATION / DOCUMENTATION</div>
+        <ul class="card-body">
+          <li>Order error</li>
+          <li>Medical records unavailable</li>
+          <li>Policy not available</li>
+          <li>Confidentiality</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cards-grid cols-3">
+      <div class="card">
+        <div class="card-head">LABORATORY AND DIAGNOSTIC PROCEDURES</div>
+        <ul class="card-body">
+          <li>Improper labeling</li>
+          <li>Improper specimen</li>
+          <li>No requisition</li>
+          <li>Misplaced sample</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">FALL RISK ASSESSMENT AND PREVENTION</div>
+        <ul class="card-body">
+          <li>Failure to assess fall risk on admission</li>
+          <li>Lack of implementation of fall precautions</li>
+          <li>Inadequate supervision of high-risk patients</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">PATIENT IDENTIFICATION</div>
+        <ul class="card-body">
+          <li>Failure to use two identifiers</li>
+          <li>Mislabelling of laboratory samples</li>
+          <li>Wrong patient procedures or tests</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cards-grid cols-1">
+      <div class="card">
+        <div class="card-head">AGGRESSION / AGITATION</div>
+        <ul class="card-body cols-2">
+          <li>Verbal/Physical aggression toward staff</li>
+          <li>Verbal/Physical aggression toward other patients</li>
+          <li>Aggression toward property</li>
+          <li>Self-directed aggression</li>
+          <li>Threatening behavior with object</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cards-grid cols-4">
+      <div class="card">
+        <div class="card-head">PATIENT HANDOVER AND COMMUNICATION</div>
+        <ul class="card-body">
+          <li>Incomplete handovers</li>
+          <li>Failure to relay critical information</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">EMERGENCY CODE RESPONSE</div>
+        <ul class="card-body">
+          <li>Delayed activation of Code Blue</li>
+          <li>Inadequate training in CPR</li>
+          <li>Failure to document incident management steps</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">ENVIRONMENTAL SAFETY</div>
+        <ul class="card-body">
+          <li>Hazardous material</li>
+          <li>Security / Safety / Fire</li>
+          <li>Environmental risks not addressed</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">INFECTION CONTROL</div>
+        <ul class="card-body">
+          <li>Needle stick</li>
+          <li>Sharps injury</li>
+          <li>Isolation precautions noncompliance</li>
+          <li>Improper disposal of sharps or contaminated materials</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="other">
+      <b>Other Types of Events:</b>
+      <div class="line" contenteditable="true"></div>
+    </div>
+
+    <div class="text-block">
+      <div class="heading">Brief description of the incident:</div>
+      <div class="textarea" contenteditable="true"></div>
+    </div>
+
+    <div class="text-block cols-2">
+      <div>
+        <div class="heading">Person's current condition:</div>
+        <div class="textarea" contenteditable="true"></div>
+      </div>
+      <div>
+        <div class="heading">Immediate Corrective Action:</div>
+        <div class="textarea" contenteditable="true"></div>
+        <div class="inline yesno">
+          <span>Supervisor informed?</span>
+          <label class="check"><input type="radio" name="sup"> Yes</label>
+          <label class="check"><input type="radio" name="sup"> No</label>
+        </div>
+        <div class="inline yesno">
+          <span>Physician informed?</span>
+          <label class="check"><input type="radio" name="phy"> Yes</label>
+          <label class="check"><input type="radio" name="phy"> No</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer signature strip -->
+    <div class="signatures">
+      <div>Reported by: <span class="field" contenteditable="true"></span></div>
+      <div>Department/Location: <span class="field" contenteditable="true"></span></div>
+      <div>Mobile/Ext no.: <span class="field" contenteditable="true"></span></div>
+      <div>MOH Email: <span class="field" contenteditable="true"></span></div>
+    </div>
+
+    <div class="sheet-footer">
+      <div>This form is for Quality Improvement purposes only.</div>
+      <div>Generated electronically.</div>
+    </div>
+  </div>
+</div>
