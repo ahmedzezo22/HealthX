@@ -1,0 +1,36 @@
+/* Responsive form layout */
+.container { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+.actions { display: flex; gap: 8px; align-items: center; margin: 8px 0 16px; flex-wrap: wrap; }
+.btn { border: 1px solid #1f7a8c; background: #fff; color: #1f7a8c; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+.btn.primary { background: #1f7a8c; color: white; }
+input[type="email"]{ padding:8px 10px; border:1px solid #ced4da; border-radius:6px; min-width: 240px; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+.grid label { display: grid; gap: 6px; font-size: 12px; }
+.grid input, .grid select, .grid textarea { padding: 10px; border: 1px solid #ced4da; border-radius: 6px; font-size: 14px; }
+.grid .wide { grid-column: span 2; }
+.grid .full { grid-column: 1 / -1; }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+/* A4 sheet preview to be converted into a crisp PDF */
+.pdf-a4 { width: 794px; /* 210mm at 96dpi ≈ 794px */
+  min-height: 1123px; /* 297mm at 96dpi ≈ 1123px */
+  margin: 0 auto 24px; background: white; color: #111;
+  border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 10px 16px rgba(0,0,0,0.06);
+  padding: 18px 18px 24px; box-sizing: border-box; }
+
+/* Use a narrower content width on mobile preview to avoid sideways scroll */
+@media (max-width: 860px) { .pdf-a4 { width: 100%; } }
+
+.pdf-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #1f7a8c; padding-bottom: 8px; margin-bottom: 8px; }
+.pdf-header .title { font-weight: 700; font-size: 18px; color: #1f7a8c; text-align: right; max-width: 45%; }
+
+.pdf-section { padding: 8px 0; border-bottom: 1px solid #e5e7eb; }
+.pdf-section:last-child { border-bottom: 0; }
+
+.grid-col-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.grid-col-2 .full { grid-column: 1 / -1; }
+
+.box { min-height: 80px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; background: #fff; white-space: pre-wrap; }
+
+.pdf-footer { margin-top: 10px; text-align: center; color: #6b7280; }

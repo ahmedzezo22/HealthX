@@ -24,6 +24,7 @@ import { VisionComponent } from './pages/dashboard/vision/vision.component';
 import { TracksComponent as TracksManagementComponent } from './pages/dashboard/tracks/tracks.component';
 import { FAQComponent } from './pages/dashboard/faq/faq.component';
 import { AboutManagmentComponent } from './pages/dashboard/about/about.component';
+import { ReportComponent } from './pages/report/report.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -38,6 +39,7 @@ export const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'report', component: ReportComponent },
   { 
     path: 'dashboard', 
     component: DashboardLayoutComponent,

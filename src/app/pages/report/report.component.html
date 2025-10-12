@@ -1,0 +1,102 @@
+<div class="container">
+  <h2>Occurrence / Variance Report (Preview)</h2>
+
+  <div class="actions">
+    <input type="email" placeholder="Recipient email" [(ngModel)]="emailTo" />
+    <button class="btn primary" (click)="downloadPdf()">Download PDF</button>
+    <button class="btn" (click)="sendEmail()">Send Email (stub)</button>
+  </div>
+
+  <!-- Simple responsive inputs to fill the PDF fields -->
+  <form class="grid">
+    <label>
+      <span>Name</span>
+      <input type="text" [(ngModel)]="form.name" name="name" />
+    </label>
+    <label>
+      <span>MRN</span>
+      <input type="text" [(ngModel)]="form.mrn" name="mrn" />
+    </label>
+    <label>
+      <span>D.O.B</span>
+      <input type="date" [(ngModel)]="form.dob" name="dob" />
+    </label>
+    <label>
+      <span>Nationality</span>
+      <input type="text" [(ngModel)]="form.nationality" name="nationality" />
+    </label>
+    <label>
+      <span>Clinic</span>
+      <input type="text" [(ngModel)]="form.clinic" name="clinic" />
+    </label>
+    <label>
+      <span>Doctor</span>
+      <input type="text" [(ngModel)]="form.doctor" name="doctor" />
+    </label>
+    <label>
+      <span>Status</span>
+      <select [(ngModel)]="form.status" name="status">
+        <option value="">Select</option>
+        <option>In-patient</option>
+        <option>Outpatient</option>
+        <option>Emergency patient</option>
+      </select>
+    </label>
+    <label>
+      <span>Date of Incident</span>
+      <input type="date" [(ngModel)]="form.dateOfIncident" name="dateOfIncident" />
+    </label>
+    <label>
+      <span>Time of Incident</span>
+      <input type="time" [(ngModel)]="form.timeOfIncident" name="timeOfIncident" />
+    </label>
+    <label class="wide">
+      <span>Incident Location</span>
+      <input type="text" [(ngModel)]="form.incidentLocation" name="incidentLocation" />
+    </label>
+    <label class="wide">
+      <span>Department/Area</span>
+      <input type="text" [(ngModel)]="form.department" name="department" />
+    </label>
+    <label class="full">
+      <span>Brief Description</span>
+      <textarea rows="3" [(ngModel)]="form.briefDescription" name="briefDescription"></textarea>
+    </label>
+  </form>
+
+  <!-- PDF A4 styled preview: this exact element will be rasterized to PDF -->
+  <div #pdfArea class="pdf-a4">
+    <div class="pdf-header">
+      <div>
+        <h3>Kingdom of Saudi Arabia</h3>
+        <div>Hail Health Cluster</div>
+        <div>Quality & Patient Safety Department</div>
+        <small>(Not part of the Medical Record)</small>
+      </div>
+      <div class="title">Occurrence / Variance Report</div>
+    </div>
+
+    <div class="pdf-section grid-col-2">
+      <div><strong>Name:</strong> {{ form.name || '—' }}</div>
+      <div><strong>MRN:</strong> {{ form.mrn || '—' }}</div>
+      <div><strong>D.O.B:</strong> {{ form.dob || '—' }}</div>
+      <div><strong>Nationality:</strong> {{ form.nationality || '—' }}</div>
+      <div><strong>Clinic:</strong> {{ form.clinic || '—' }}</div>
+      <div><strong>Doctor:</strong> {{ form.doctor || '—' }}</div>
+      <div class="full"><strong>Status:</strong> {{ form.status || '—' }}</div>
+      <div><strong>Date:</strong> {{ form.dateOfIncident || '—' }}</div>
+      <div><strong>Time:</strong> {{ form.timeOfIncident || '—' }}</div>
+      <div class="full"><strong>Incident Location:</strong> {{ form.incidentLocation || '—' }}</div>
+      <div class="full"><strong>Department/Area:</strong> {{ form.department || '—' }}</div>
+    </div>
+
+    <div class="pdf-section">
+      <strong>Brief Description of the Incident</strong>
+      <div class="box">{{ form.briefDescription || '—' }}</div>
+    </div>
+
+    <div class="pdf-footer">
+      <small>Generated from mobile-friendly web form. For quality improvement purposes only.</small>
+    </div>
+  </div>
+</div>
