@@ -15,16 +15,35 @@ export class PdfService {
   async generateBlobFromElement(element: HTMLElement, options: PdfOptions = {}): Promise<Blob> {
     const { scale = 2, marginPt = 16 } = options;
 
+    // Guard against zero dimensions which can cause non-finite canvas math
+    const width = Math.max(
+      1,
+      Math.floor(
+        (element.scrollWidth || element.clientWidth || element.offsetWidth || element.getBoundingClientRect().width || 0)
+      )
+    );
+    const height = Math.max(
+      1,
+      Math.floor(
+        (element.scrollHeight || element.clientHeight || element.offsetHeight || element.getBoundingClientRect().height || 0)
+      )
+    );
+
     // Render the element to canvas at high resolution for crisp PDF output
     const canvas = await html2canvas(element, {
       scale,
       useCORS: true,
       logging: false,
       backgroundColor: '#ffffff',
-      windowWidth: element.scrollWidth,
-      windowHeight: element.scrollHeight,
+      // Using foreignObjectRendering avoids CanvasGradient.addColorStop issues from complex CSS gradients
+      foreignObjectRendering: true,
+      // Clamp to non-zero values; zero sizes can lead to non-finite gradient offsets in some browsers
+      windowWidth: width,
+      windowHeight: height,
     });
 
+    const safeCanvasWidth = Math.max(1, canvas.width);
+    const safeCanvasHeight = Math.max(1, canvas.height);
     const imageData = canvas.toDataURL('image/png');
 
     // Create A4 pdf in portrait
@@ -34,7 +53,7 @@ export class PdfService {
 
     // Calculate target image dimensions
     const imgWidth = pageWidth;
-    const imgHeight = (canvas.height * imgWidth) / canvas.width; // keep aspect ratio
+    const imgHeight = (safeCanvasHeight * imgWidth) / safeCanvasWidth; // keep aspect ratio
 
     let remainingHeight = imgHeight;
     let positionY = marginPt;
